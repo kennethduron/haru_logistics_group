@@ -435,7 +435,7 @@
   <!-- SERVICES -->
   <section id="servicios" class="py-5">
     <div class="container text-center">
-      <h2 class="mb-4">Nuestros Servicios</h2>
+      <h2 class="mb-4" data-i18n="services.title">Nuestros Servicios</h2>
 
       <!-- ✅ Equal height cards with images -->
       <div class="row g-4 align-items-stretch">
@@ -444,9 +444,9 @@
             <img src="./images/image2.jpg" alt="Transporte Marítimo">
             <div class="card-body">
               <i class="bi bi-ship fs-1 mb-3 text-primary"></i>
-              <h5>Transporte Marítimo</h5>
-              <p>Fletes internacionales confiables y eficientes por vía marítima, con cobertura global y soluciones
-                adaptadas a tus tiempos.</p>
+              <h5 data-i18n="services.maritime">Transporte Marítimo</h5>
+              <p data-i18n="services.maritimeDesc">Fletes internacionales confiables y eficientes por vía marítima, con
+                cobertura global y soluciones adaptadas a tus tiempos.</p>
             </div>
           </div>
         </div>
@@ -456,9 +456,9 @@
             <img src="./images/image3.jpg" alt="Transporte Aéreo">
             <div class="card-body">
               <i class="bi bi-airplane fs-1 mb-3 text-primary"></i>
-              <h5>Transporte Aéreo</h5>
-              <p>Entregas urgentes y seguras por vía aérea en todo el mundo. Ideal para mercancía de alto valor o tiempo
-                crítico.</p>
+              <h5 data-i18n="services.air">Transporte Aéreo</h5>
+              <p data-i18n="services.airDesc">Entregas urgentes y seguras por vía aérea en todo el mundo. Ideal para
+                mercancía de alto valor o tiempo crítico.</p>
             </div>
           </div>
         </div>
@@ -468,9 +468,9 @@
             <img src="./images/image1.jpg" alt="Transporte Terrestre">
             <div class="card-body">
               <i class="bi bi-truck fs-1 mb-3 text-primary"></i>
-              <h5>Transporte Terrestre</h5>
-              <p>Distribución terrestre local e internacional con flota moderna y seguimiento en tiempo real para máxima
-                seguridad.</p>
+              <h5 data-i18n="services.road">Transporte Terrestre</h5>
+              <p data-i18n="services.roadDesc">Distribución terrestre local e internacional con flota moderna y
+                seguimiento en tiempo real para máxima seguridad.</p>
             </div>
           </div>
         </div>
@@ -565,12 +565,11 @@
 
         <div class="col-lg-6 mt-4 mt-lg-0">
           <div class="map-responsive">
-            <!-- Embedded Google Map for Residencial Villa Nova (matches the screenshot). Replace src if you have a specific map/embed -->
+            <!-- Embedded Google Map updated from your provided link -->
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14629.525738067076!2d-87.98536074603015!3d15.334964450487172!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6668eed89d2b75%3A0x1b9c5a1e59c6d72!2sResidencial%20Villa%20Nova!5e1!3m2!1sen!2sus!4v1761434516109!5m2!1sen!2sus"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" aria-hidden="false" tabindex="0"></iframe>
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3872.275913170818!2d-87.9871865!3d15.3191809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fdd7ec2e4b445%3A0x6c5e5dc1479e3b5f!2sHARU%20LOGISTICS%20GROUP!5e0!3m2!1ses!2shn!4v1730150400000!5m2!1ses!2shn"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-hidden="false"
+              tabindex="0"></iframe>
           </div>
         </div>
       </div>
@@ -673,7 +672,7 @@
         cta: { quote: "Cotizar", call: "Llámanos" },
         hero: { title: "Soluciones logísticas internacionales confiables", lead: "Transporte marítimo, aéreo y terrestre. Trámites aduaneros y seguimiento en tiempo real — desde Honduras al mundo.", quote: "Solicitar cotización", track: "Rastrear envío" },
         about: { title: "Sobre Nosotros", lead: "En Haru Logistics Group conectamos Honduras con los principales mercados globales. Ofrecemos soluciones integrales, trámites aduaneros, seguros y seguimiento para que tu carga llegue segura y a tiempo.", experience: "+10 años", experienceLabel: "de experiencia", network: "120+", networkLabel: "puertos asociados", onTime: "95%", onTimeLabel: "entregas a tiempo" },
-        services: { title: "Nuestros Servicios", maritime: "Transporte Marítimo", maritimeDesc: "Fletes seguros y eficientes desde y hacia puertos internacionales, con seguimiento constante.", air: "Transporte Aéreo", airDesc: "Entrega rápida y confiable para cargas urgentes a nivel global.", road: "Transporte Terrestre", roadDesc: "Distribución regional e internacional con monitoreo de rutas y tiempos." },
+        services: { title: "Nuestros Servicios", maritime: "Transporte Marítimo", maritimeDesc: "Fletes internacionales confiables y eficientes por vía marítima, con cobertura global y soluciones adaptadas a tus tiempos.", air: "Transporte Aéreo", airDesc: "Entregas urgentes y seguras por vía aérea en todo el mundo. Ideal para mercancía de alto valor o tiempo crítico.", road: "Transporte Terrestre", roadDesc: "Distribución terrestre local e internacional con flota moderna y seguimiento en tiempo real para máxima seguridad." },
         tracking: { title: "Seguimiento de Envíos", button: "Rastrear" },
         testimonials: {
           title: "Testimonios",
@@ -962,6 +961,42 @@
       if (!str) return '';
       return str.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
     }
+
+    const translations = {
+      es: {
+        "services.title": "Nuestros Servicios",
+        "services.maritime.title": "Transporte Marítimo",
+        "services.maritime.desc": "Ofrecemos soluciones de transporte marítimo confiables para cargas internacionales.",
+        "services.air.title": "Transporte Aéreo",
+        "services.air.desc": "Envíe sus mercancías por vía aérea de manera rápida y segura.",
+        "services.land.title": "Transporte Terrestre",
+        "services.land.desc": "Coordinamos el transporte terrestre nacional e internacional con total eficiencia."
+      },
+      en: {
+        "services.title": "Our Services",
+        "services.maritime.title": "Maritime Transport",
+        "services.maritime.desc": "We provide reliable maritime transport solutions for international cargo.",
+        "services.air.title": "Air Transport",
+        "services.air.desc": "Send your goods quickly and safely by air.",
+        "services.land.title": "Land Transport",
+        "services.land.desc": "We coordinate domestic and international ground transportation efficiently."
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      localStorage.setItem("lang", lang);
+    }
+
+    document.getElementById("lang-es").addEventListener("click", () => changeLanguage("es"));
+    document.getElementById("lang-en").addEventListener("click", () => changeLanguage("en"));
+
+
   </script>
 </body>
 
