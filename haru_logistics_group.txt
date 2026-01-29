@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Haru Logistics Group - Servicios de Flete Internacional | HARU LOGISTICS GROUP</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      padding-top: 80px; /* Prevents content from being hidden behind fixed navbar */
+    }
+
+    /* Hero banner with logistics video background */
+    .hero {
+      position: relative;
+      color: #fff;
+      padding: 7rem 0;
+      overflow: hidden;
+    }
+    .hero video.background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      min-width: 100%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      object-fit: cover;
+    }
+    .hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .service-card {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: .75rem;
+      transition: transform 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+    .process-step {
+      background: rgba(0, 0, 0, 0.03);
+      padding: 1rem;
+      border-radius: .5rem;
+    }
+    .map-placeholder {
+      height: 220px;
+      background: linear-gradient(90deg, #e9ecef, #f8f9fa);
+      border-radius: .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+    }
+    .floating-whatsapp {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1050;
+    }
+    .floating-cta {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 1040;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: .5rem;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar (fixed-top) -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Haru Logistics Group</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tracking">Seguimiento</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+        </ul>
+        <a class="btn btn-primary ms-3" href="#quoteModal" data-bs-toggle="modal">Cotizar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner with Logistics Video -->
+  <header class="hero">
+    <video class="background-video" autoplay muted loop poster="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80">
+      <source src="https://cdn.pixabay.com/vimeo/825448990/logistics-container-port-33164050.mp4" type="video/mp4">
+      Tu navegador no soporta la etiqueta de vídeo.
+    </video>
+    <div class="overlay"></div>
+    <div class="container text-center text-lg-start">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="display-5 fw-bold mb-3">Soluciones logísticas internacionales confiables</h1>
+          <p class="lead mb-4">Transporte marítimo, aéreo y terrestre. Trámites aduaneros y seguimiento en tiempo real — desde Honduras al mundo.</p>
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <a class="btn btn-primary btn-lg" href="#quoteModal" data-bs-toggle="modal">Solicitar cotización</a>
+            <a class="btn btn-outline-light btn-lg" href="#tracking">Rastrear envío</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Gallery -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4 text-center">Nuestra Flota y Cobertura</h2>
+      <div class="row g-4 gallery">
+        <div class="col-md-4">
+          <div class="card h-100 border-0">
+            <img src="./images/image1.jpg" alt="Contenedores apilados en puerto">
+            <div class="card-body text-center">
+              <p class="small mb-0 text-muted">Contenedores marítimos listos para carga internacional en nuestros principales puertos aliados.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0">
+            <img src="./images/image2.jpg" alt="Carga marítima en puerto">
+            <div class="card-body text-center">
+              <p class="small mb-0 text-muted">Operaciones logísticas marítimas eficientes que garantizan puntualidad en cada envío.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0">
+            <img src="./images/image3.jpg" alt="Transporte terrestre de carga">
+            <div class="card-body text-center">
+              <p class="small mb-0 text-muted">Flota terrestre moderna y segura para distribución regional y entregas puerta a puerta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="services" class="py-5 bg-white">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Servicios</h2>
+        <a href="#" class="text-decoration-none">Ver todos</a>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 service-card h-100">
+            <h5><i class="bi bi-ship me-2 text-primary"></i>Fletes Marítimos</h5>
+            <p class="small mb-2">Importación y exportación, FCL / LCL, consolidaciones y rutas optimizadas.</p>
+            <a href="#" class="small">Detalles &rarr;</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 service-card h-100">
+            <h5><i class="bi bi-airplane me-2 text-primary"></i>Fletes Aéreos</h5>
+            <p class="small mb-2">Envíos urgentes con opciones de consolidado y despacho exprés.</p>
+            <a href="#" class="small">Detalles &rarr;</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 service-card h-100">
+            <h5><i class="bi bi-truck me-2 text-primary"></i>Transporte Terrestre</h5>
+            <p class="small mb-2">Tránsitos locales e internacionales, carga pesada y logística puerta a puerta.</p>
+            <a href="#" class="small">Detalles &rarr;</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 service-card h-100">
+            <h5><i class="bi bi-file-earmark-text me-2 text-primary"></i>Trámites Aduaneros</h5>
+            <p class="small mb-2">Asistencia en documentación, clasificación arancelaria y cumplimiento.</p>
+            <a href="#" class="small">Detalles &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="py-5">
+    <div class="container">
+      <h2>Cómo funciona</h2>
+      <div class="row gy-3 mt-3">
+        <div class="col-md-3">
+          <div class="process-step text-center">
+            <strong>1. Cotice</strong>
+            <p class="small mb-0">Solicite una cotización sencilla en línea.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="process-step text-center">
+            <strong>2. Envíe Documentos</strong>
+            <p class="small mb-0">Suba documentación y coordine el pickup.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="process-step text-center">
+            <strong>3. Seguimiento</strong>
+            <p class="small mb-0">Monitoreo en tiempo real del estado del envío.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="process-step text-center">
+            <strong>4. Entrega</strong>
+            <p class="small mb-0">Entrega final y cierre de documentación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracking -->
+  <section id="tracking" class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h3>Seguimiento de contenedores</h3>
+          <p class="small">Ingrese su número de contenedor o booking para obtener el estado más reciente.</p>
+          <form id="trackForm" class="row g-2">
+            <div class="col-sm-8">
+              <input id="trackingCode" class="form-control" placeholder="Ej: ABCU1234567" required>
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-primary w-100" type="submit">Rastrear</button>
+            </div>
+            <div class="col-12 mt-2 small" id="trackResult" style="display:none"></div>
+          </form>
+        </div>
+        <div class="col-lg-5">
+          <div class="map-placeholder">Mapa / cobertura de rutas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="py-5 bg-white">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Últimas noticias</h2>
+        <a href="#" class="small">Ver todas</a>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="p-3 border rounded h-100">
+            <h6>Cómo preparar su carga para exportación</h6>
+            <p class="small">Consejos prácticos para evitar demoras y costos adicionales en aduana.</p>
+            <a href="#" class="small">Leer más &rarr;</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 border rounded h-100">
+            <h6>Cambios recientes en regulaciones aduaneras</h6>
+            <p class="small">Resumen de cambios que afectan a importadores en la región.</p>
+            <a href="#" class="small">Leer más &rarr;</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 border rounded h-100">
+            <h6>Rutas optimizadas para Centroamérica</h6>
+            <p class="small">Cómo reducir costos y tiempos en envíos regionales.</p>
+            <a href="#" class="small">Leer más &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Contacto</h5>
+          <p class="small mb-1">Residencial Villanova, Villanueva Cortés, Honduras</p>
+          <p class="small mb-1">Tel: +504 9980-3341</p>
+          <p class="small mb-1">Email: <a href="mailto:info@harulogisticsgroup.com">info@harulogisticsgroup.com</a></p>
+        </div>
+        <div class="col-md-6">
+          <h5>Formulario rápido</h5>
+          <form id="quickContact" class="row g-2">
+            <div class="col-12"><input class="form-control" placeholder="Nombre" required></div>
+            <div class="col-md-6"><input class="form-control" placeholder="Teléfono"></div>
+            <div class="col-md-6"><input class="form-control" placeholder="Email"></div>
+            <div class="col-12"><textarea class="form-control" rows="2" placeholder="Mensaje"></textarea></div>
+            <div class="col-12 text-end"><button class="btn btn-primary">Enviar</button></div>
+          </form>
+        </div>
+      </div>
+      <hr class="mt-4">
+      <div class="d-flex justify-content-between small">
+        <div>© Haru Logistics Group</div>
+        <div><a href="#" class="text-decoration-none">Política de privacidad</a> · <a href="#">Términos</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating -->
+  <a class="floating-whatsapp" href="https://wa.me/50499803341" target="_blank" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:56px;height:56px">
+  </a>
+
+  <!-- Call Floating -->
+  <a href="tel:+50499803341" class="btn btn-primary floating-cta"><i class="bi bi-telephone me-1"></i> Llámanos</a>
+
+  <!-- Cotización Modal -->
+  <div class="modal fade" id="quoteModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Solicitar cotización</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="quoteForm" class="modal-body">
+          <div class="row g-2">
+            <div class="col-md-6"><input name="nombre" class="form-control" placeholder="Nombre / Empresa" required></div>
+            <div class="col-md-6"><input name="email" class="form-control" placeholder="Email" required></div>
+            <div class="col-md-6"><input name="origen" class="form-control" placeholder="Origen (ciudad/país)" required></div>
+            <div class="col-md-6"><input name="destino" class="form-control" placeholder="Destino (ciudad/país)" required></div>
+            <div class="col-md-4">
+              <select name="servicio" class="form-select">
+                <option>Fletes Marítimos</option>
+                <option>Fletes Aéreos</option>
+                <option>Transporte Terrestre</option>
+                <option>Trámites Aduaneros</option>
+              </select>
+            </div>
+            <div class="col-md-4"><input name="peso" class="form-control" placeholder="Peso (kg) / Volumen (m3)"></div>
+            <div class="col-md-4"><input name="fecha" type="date" class="form-control"></div>
+            <div class="col-12"><textarea name="detalle" class="form-control" rows="3" placeholder="Detalles del envío"></textarea></div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" form="quoteForm" class="btn btn-primary">Enviar solicitud</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tracking simulation
+    document.getElementById('trackForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const code = document.getElementById('trackingCode').value.trim().toUpperCase();
+      const result = document.getElementById('trackResult');
+      if (!code) return;
+      result.style.display = 'block';
+      result.textContent = `El contenedor ${code} se encuentra en tránsito - Última actualización hace 2h.`;
+    });
+
+    // Quote simulation
+    document.getElementById('quoteForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('¡Gracias! Hemos recibido su solicitud y le contactaremos pronto.');
+      const modal = bootstrap.Modal.getInstance(document.getElementById('quoteModal'));
+      modal.hide();
+      this.reset();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

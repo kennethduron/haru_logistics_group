@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haru Logistics Group - Fletes Internacionales Confiables</title>
+  <meta name="description"
+    content="Haru Logistics Group ofrece soluciones logísticas internacionales confiables: transporte marítimo, aéreo y terrestre desde Honduras al mundo. Cotiza tu envío hoy.">
+  <meta name="keywords"
+    content="logística, fletes internacionales, transporte marítimo, transporte aéreo, transporte terrestre, Honduras, Haru Logistics">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Haru Logistics Group - Fletes Internacionales Confiables" />
+  <meta property="og:description"
+    content="Transporte marítimo, aéreo y terrestre desde Honduras al mundo. Servicios confiables y seguimiento en tiempo real." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_HN" />
+  <meta name="author" content="Haru Logistics Group" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="./images/favicon.png" type="image/png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.harulogisticsgroup.com/">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons (version >=1.11.0 required for bi-ship) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --brand-1: #004aad;
+      --brand-2: #007bff;
+      --accent: #00a3ff;
+      --bg: #f8fafc;
+      --text: #212529;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      padding-top: 80px;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+    }
+
+    .navbar .nav-link,
+    .navbar-brand {
+      color: #fff !important;
+    }
+
+    .navbar .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    .lang-switch {
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: transparent;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      color: #fff;
+      padding: 6.5rem 0;
+      overflow: hidden;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      min-height: 56vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero video.background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120%;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 35, 82, 0.62);
+      z-index: 1;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      border: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    }
+
+    /* SERVICE CARDS */
+    .service-card {
+      border: none;
+      border-radius: .75rem;
+      background: #fff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card img {
+      border-radius: .75rem .75rem 0 0;
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    /* ensure service icon above subtitle and consistent size */
+    .service-icon {
+      font-size: 2.6rem;
+      color: var(--brand-1);
+      display: block;
+      margin-bottom: .6rem;
+    }
+
+    /* fallback inline-svg icon sizing */
+    .svg-icon {
+      width: 1.9rem;
+      height: 1.9rem;
+      vertical-align: -0.15rem;
+      margin-right: .5rem;
+      fill: currentColor;
+      color: #004aad;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-card {
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+      padding: 1.4rem;
+      background: #fff;
+      transition: transform .35s ease, box-shadow .35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+    }
+
+    .testimonial-quote {
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    /* CENTER testimonial author and role */
+    .testimonial-meta {
+      margin-top: .9rem;
+      text-align: center;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--brand-1);
+      display: block;
+      margin-top: .35rem;
+    }
+
+    .testimonial-role {
+      font-size: .9rem;
+      color: #6c757d;
+      display: block;
+      margin-top: .15rem;
+    }
+
+    /* center the flag in testimonial meta */
+    .testimonial-meta .flag {
+      display: inline-block;
+      margin-bottom: .45rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #002b5c, var(--brand-1));
+      color: #fff;
+    }
+
+    footer a {
+      color: #b8dcff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* FLOATING */
+    .floating-whatsapp {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1050;
+      transition: transform 0.3s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.06);
+    }
+
+    .floating-cta {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 1040;
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s infinite;
+      color: #fff;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 12px rgba(0, 123, 255, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+      }
+    }
+
+    /* MODAL */
+    .modal-content {
+      border-radius: 1rem;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+      animation: fadeInUp 0.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero video.background-video {
+        width: 160%;
+      }
+
+      .service-card img {
+        height: 180px;
+      }
+    }
+
+    /* small helpers */
+    .flag {
+      width: 22px;
+      height: 14px;
+      object-fit: cover;
+      margin-right: 6px;
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Ubicación map responsive helper */
+    .map-responsive {
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+      border-radius: .5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .map-responsive iframe {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      border: 0;
+      border-radius: .5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="#inicio">
+        <!-- Primary icon element (Bootstrap Icon). If it fails, JS will replace with inline SVG -->
+        Haru Logistics Group
+      </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+        aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto me-3">
+          <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.about">Sobre nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicios" data-i18n="nav.services">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tracking" data-i18n="nav.tracking">Seguimiento</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ubicacion" data-i18n="nav.location">Ubicación</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center">
+          <a class="btn btn-light me-3" href="#quoteModal" data-bs-toggle="modal" data-i18n="cta.quote">Cotizar</a>
+
+          <!-- Language switcher top-right -->
+          <div class="btn-group" role="group" aria-label="Language switch">
+            <button id="langEs" class="btn lang-switch active" data-lang="es" aria-pressed="true">
+              <img src="./images/spain_flag.png" alt="" class="flag"> ES
+            </button>
+            <button id="langEn" class="btn lang-switch" data-lang="en" aria-pressed="false">
+              <img src="./images/flag_usa.jpg" alt="" class="flag"> EN
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="inicio" class="hero text-center text-lg-start" role="banner">
+    <!-- Background video; replace source with your own hosted video if needed -->
+    <video class="background-video" autoplay muted loop playsinline
+      poster="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80"
+      aria-hidden="true">
+      <!-- NOTE: some free video CDN links can break; host your own for production -->
+      <source src="https://cdn.pixabay.com/vimeo/825448990/logistics-container-port-33164050.webm" type="video/webm" />
+    </video>
+    <div class="overlay"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-5 fw-bold mb-3 fade-up" data-i18n="hero.title">Soluciones logísticas internacionales
+            confiables</h1>
+          <p class="lead mb-4 fade-up" data-i18n="hero.lead">Transporte marítimo, aéreo y terrestre. Trámites aduaneros
+            y
+            seguimiento en tiempo real — desde Honduras al mundo.</p>
+          <div class="d-flex flex-column flex-sm-row gap-2 fade-up">
+            <a class="btn btn-light btn-lg" href="#quoteModal" data-bs-toggle="modal" data-i18n="hero.quote">Solicitar
+              cotización</a>
+            <a class="btn btn-outline-light btn-lg" href="#tracking" data-i18n="hero.track">Rastrear envío</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-5 bg-white">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3 fade-up" data-i18n="about.title">Sobre Nosotros</h2>
+      <p class="lead mb-4 fade-up" data-i18n="about.lead">
+        En Haru Logistics Group conectamos Honduras con los principales mercados globales. Ofrecemos soluciones
+        integrales, trámites aduaneros, seguros y seguimiento para que tu carga llegue segura y a tiempo.
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <ul class="list-unstyled d-flex flex-column flex-md-row justify-content-center gap-3">
+            <li class="text-muted"><strong data-i18n="about.experience">+10 años</strong> <span
+                data-i18n="about.experienceLabel">de experiencia</span></li>
+            <li class="text-muted"><strong data-i18n="about.network">120+</strong> <span
+                data-i18n="about.networkLabel">puertos asociados</span></li>
+            <li class="text-muted"><strong data-i18n="about.onTime">95%</strong> <span
+                data-i18n="about.onTimeLabel">entregas a tiempo</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios" class="py-5">
+    <div class="container text-center">
+      <h2 class="mb-4" data-i18n="services.title">Nuestros Servicios</h2>
+
+      <!-- ✅ Equal height cards with images -->
+      <div class="row g-4 align-items-stretch">
+        <div class="col-md-4 d-flex">
+          <div class="card service-card h-100 w-100">
+            <img src="./images/image2.jpg" alt="Transporte Marítimo">
+            <div class="card-body">
+              <i class="bi bi-ship fs-1 mb-3 text-primary"></i>
+              <h5 data-i18n="services.maritime">Transporte Marítimo</h5>
+              <p data-i18n="services.maritimeDesc">Fletes internacionales confiables y eficientes por vía marítima, con
+                cobertura global y soluciones adaptadas a tus tiempos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 d-flex">
+          <div class="card service-card h-100 w-100">
+            <img src="./images/image3.jpg" alt="Transporte Aéreo">
+            <div class="card-body">
+              <i class="bi bi-airplane fs-1 mb-3 text-primary"></i>
+              <h5 data-i18n="services.air">Transporte Aéreo</h5>
+              <p data-i18n="services.airDesc">Entregas urgentes y seguras por vía aérea en todo el mundo. Ideal para
+                mercancía de alto valor o tiempo crítico.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 d-flex">
+          <div class="card service-card h-100 w-100">
+            <img src="./images/image1.jpg" alt="Transporte Terrestre">
+            <div class="card-body">
+              <i class="bi bi-truck fs-1 mb-3 text-primary"></i>
+              <h5 data-i18n="services.road">Transporte Terrestre</h5>
+              <p data-i18n="services.roadDesc">Distribución terrestre local e internacional con flota moderna y
+                seguimiento en tiempo real para máxima seguridad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKING -->
+  <section id="tracking" class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4 fade-up" data-i18n="tracking.title">Seguimiento de Envíos</h2>
+      <form id="trackForm" class="fade-up" aria-label="Tracking form">
+        <div class="input-group mb-3 mx-auto" style="max-width: 460px;">
+          <input type="text" id="trackingCode" class="form-control" placeholder="Ingrese código de rastreo" required
+            aria-label="Tracking code">
+          <button class="btn btn-primary" type="submit" data-i18n="tracking.button">Rastrear</button>
+        </div>
+      </form>
+      <p id="trackResult" class="text-muted mt-3" style="display:none;" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4 fade-up" data-i18n="testimonials.title">Testimonios</h2>
+      <p class="mb-4 text-muted fade-up" data-i18n="testimonials.lead">Lo que dicen nuestros clientes</p>
+
+      <div class="row g-4">
+        <!-- Testimonial cards generated from JS content for bilingual support -->
+        <div id="testimonialGrid" class="row g-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4 fade-up" data-i18n="blog.title">Noticias y Actualizaciones</h2>
+      <div class="row g-4">
+        <div class="col-md-4 fade-up">
+          <div class="service-card">
+            <img src="./images/image6.png" loading="lazy" alt="Expansión de rutas" />
+            <div class="p-4">
+              <h5 data-i18n="blog.item1.title">Expansión de rutas 2025</h5>
+              <p data-i18n="blog.item1.desc">Haru Logistics amplía su red marítima con nuevos destinos
+                internacionales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up">
+          <div class="service-card">
+            <img src="./images/image5.webp" loading="lazy" alt="Tecnología de rastreo" />
+            <div class="p-4">
+              <h5 data-i18n="blog.item2.title">Tecnología de rastreo</h5>
+              <p data-i18n="blog.item2.desc">Implementamos un sistema de seguimiento en tiempo real.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up">
+          <div class="service-card">
+            <img src="./images/image4.png" loading="lazy" alt="Premio a la excelencia" />
+            <div class="p-4">
+              <h5 data-i18n="blog.item3.title">Premio a la excelencia</h5>
+              <p data-i18n="blog.item3.desc">Reconocimiento internacional por eficiencia en operaciones
+                logísticas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: UBICACIÓN / LOCATION (added before footer) -->
+  <section id="ubicacion" class="py-5 bg-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-3 fade-up" data-i18n="location.title">Ubicación</h2>
+          <p class="text-muted mb-4 fade-up" data-i18n="location.lead">Nuestra empresa está ubicada estratégicamente
+            para ofrecer
+            servicios de flete internacional y transporte de carga local de manera eficiente.</p>
+
+          <p class="mb-2"><strong data-i18n="location.officeLabel">Oficina</strong><br>
+            <span data-i18n="location.office">Residencial Villanova, Villanueva Cortes, Honduras</span>
+          </p>
+
+          <p class="mb-0"><strong data-i18n="location.hoursLabel">Horario</strong><br>
+            <span data-i18n="location.hours">Lunes a Viernes<br>Sábado hasta medio día.</span>
+          </p>
+        </div>
+
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <div class="map-responsive">
+            <!-- Embedded Google Map updated from your provided link -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d61564.60683889537!2d-87.985301!3d15.333756!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6668eed89d2b75%3A0x1b9c5a1e59c6d72!2sResidencial%20Villa%20Nova!5e0!3m2!1sen!2shn!4v1761455428371!5m2!1sen!2shn"></iframe>"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-hidden="false"
+            tabindex="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="py-5 text-center">
+    <div class="container">
+      <h4 class="fw-bold mb-3" data-i18n="footer.contactTitle">Contáctanos</h4>
+      <p class="mb-1">📞 <a href="tel:+50493014381">+504 9301-4381</a></p>
+      <p class="mb-1">✉️ <a href="mailto:info@harulogisticsgroup.com">info@harulogisticsgroup.com</a></p>
+      <p class="mb-1" data-i18n="footer.address">📍 San Pedro Sula, Honduras</p>
+
+      <div class="mt-3">
+        <a href="#" class="me-3" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="me-3" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+
+      <p class="mt-4 small">© <span id="currentYear"></span> Haru Logistics Group. <span data-i18n="footer.rights">Todos
+          los derechos reservados.</span></p>
+    </div>
+  </footer>
+
+  <!-- FLOATING BUTTONS -->
+  <a class="floating-whatsapp" href="https://wa.me/50493014381" target="_blank" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+      style="width:56px;height:56px">
+  </a>
+  <a href="tel:+50493014381" class="btn btn-primary floating-cta"><i class="bi bi-telephone me-1"
+      aria-hidden="true"></i>
+    <span data-i18n="cta.call">Llámanos</span></a>
+
+  <!-- MODAL: QUOTE -->
+  <div class="modal fade" id="quoteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content p-4">
+        <h5 class="modal-title mb-3 fw-bold" data-i18n="modal.title">Solicitar cotización</h5>
+        <form action="https://formspree.io/f/mblznzyy" method="POST" id="quoteForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" name="nombre" class="form-control" placeholder="Nombre / Empresa" required
+                aria-label="Nombre">
+            </div>
+            <div class="col-md-6">
+              <input type="email" name="email" class="form-control" placeholder="Email" required aria-label="Email">
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="origen" class="form-control" placeholder="Origen (ciudad/país)" required
+                aria-label="Origen">
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="destino" class="form-control" placeholder="Destino (ciudad/país)" required
+                aria-label="Destino">
+            </div>
+            <div class="col-md-4">
+              <select name="tipo" class="form-select" required aria-label="Tipo de flete">
+                <option value="">Tipo de Flete</option>
+                <option value="Flete Marítimo">Flete Marítimo</option>
+                <option value="Flete Aéreo">Flete Aéreo</option>
+                <option value="Flete Terrestre">Flete Terrestre</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <input type="text" name="peso" class="form-control" placeholder="Peso (kg) / Volumen (m³)"
+                aria-label="Peso">
+            </div>
+            <div class="col-md-4">
+              <input type="date" name="fecha" class="form-control" aria-label="Fecha">
+            </div>
+            <div class="col-12">
+              <textarea name="detalles" class="form-control" rows="3" placeholder="Detalles del envío" required
+                aria-label="Detalles"></textarea>
+            </div>
+          </div>
+          <div class="mt-4 d-flex justify-content-end gap-2 align-items-center">
+            <div class="spinner-border text-primary" role="status" id="spinner" style="display:none;"></div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+              data-i18n="modal.close">Cerrar</button>
+            <button type="submit" class="btn btn-primary" data-i18n="modal.send">Enviar solicitud</button>
+          </div>
+        </form>
+        <div id="formSuccess" class="alert alert-success mt-3 d-none" role="status">¡Gracias! Hemos recibido tu
+          solicitud.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <script>
+    // -------------------------
+    // I18N content (ES / EN) - added location translations
+    // -------------------------
+    const I18N = {
+      es: {
+        nav: { about: "Sobre nosotros", services: "Servicios", tracking: "Seguimiento", testimonials: "Testimonios", blog: "Noticias", contact: "Contacto", location: "Ubicación" },
+        cta: { quote: "Cotizar", call: "Llámanos" },
+        hero: { title: "Soluciones logísticas internacionales confiables", lead: "Transporte marítimo, aéreo y terrestre. Trámites aduaneros y seguimiento en tiempo real — desde Honduras al mundo.", quote: "Solicitar cotización", track: "Rastrear envío" },
+        about: { title: "Sobre Nosotros", lead: "En Haru Logistics Group conectamos Honduras con los principales mercados globales. Ofrecemos soluciones integrales, trámites aduaneros, seguros y seguimiento para que tu carga llegue segura y a tiempo.", experience: "+10 años", experienceLabel: "de experiencia", network: "120+", networkLabel: "puertos asociados", onTime: "95%", onTimeLabel: "entregas a tiempo" },
+        services: { title: "Nuestros Servicios", maritime: "Transporte Marítimo", maritimeDesc: "Fletes internacionales confiables y eficientes por vía marítima, con cobertura global y soluciones adaptadas a tus tiempos.", air: "Transporte Aéreo", airDesc: "Entregas urgentes y seguras por vía aérea en todo el mundo. Ideal para mercancía de alto valor o tiempo crítico.", road: "Transporte Terrestre", roadDesc: "Distribución terrestre local e internacional con flota moderna y seguimiento en tiempo real para máxima seguridad." },
+        tracking: { title: "Seguimiento de Envíos", button: "Rastrear" },
+        testimonials: {
+          title: "Testimonios",
+          lead: "Lo que dicen nuestros clientes",
+          leave: "Dejar testimonio",
+          examples: [
+            {
+              quote: "Haru Logistics nos permitió reducir tiempos de entrega en un 30% y gestionó todo el proceso aduanero sin contratiempos.",
+              author: "Carlos Gómez",
+              role: "Exportador - AgroSula, Honduras",
+              countryFlag: "https://flagcdn.com/hn.svg"
+            },
+            {
+              quote: "Excelente comunicación y visibilidad de la carga durante todo el viaje — 100% recomendado.",
+              author: "Maria Thompson",
+              role: "Gerente de Compras - Pacific Imports",
+              countryFlag: "https://flagcdn.com/us.svg"
+            },
+            {
+              quote: "Profesionales y responsables. Siempre cumplen los tiempos y ofrecen soluciones cuando hay imprevistos.",
+              author: "Jorge Rivera",
+              role: "Distribuidor - Rivera Foods",
+              countryFlag: "https://flagcdn.com/hn.svg"
+            }
+          ]
+        },
+        blog: {
+          title: "Noticias y Actualizaciones",
+          item1: { title: "Expansión de rutas 2025", desc: "Haru Logistics amplía su red marítima con nuevos destinos internacionales." },
+          item2: { title: "Tecnología de rastreo", desc: "Implementamos un sistema de seguimiento en tiempo real." },
+          item3: { title: "Premio a la excelencia", desc: "Reconocimiento internacional por eficiencia en operaciones logísticas." }
+        },
+        modal: { title: "Solicitar cotización", close: "Cerrar", send: "Enviar solicitud" },
+        footer: { contactTitle: "Contáctanos", address: "📍 San Pedro Sula, Honduras", rights: "Todos los derechos reservados." },
+        location: {
+          title: "Ubicación",
+          lead: "Nuestra empresa está ubicada estratégicamente para ofrecer servicios de flete internacional y transporte de carga local de manera eficiente.",
+          officeLabel: "Oficina",
+          office: "Residencial Villanova, Villanueva Cortes, Honduras",
+          hoursLabel: "Horario",
+          hours: "Lunes a Viernes\nSábado hasta medio día."
+        }
+      },
+      en: {
+        nav: { about: "About", services: "Services", tracking: "Tracking", testimonials: "Testimonials", blog: "News", contact: "Contact", location: "Location" },
+        cta: { quote: "Get a quote", call: "Call us" },
+        hero: { title: "Reliable international logistics solutions", lead: "Sea, air and land transport. Customs procedures and real-time tracking — from Honduras to the world.", quote: "Request a quote", track: "Track shipment" },
+        about: { title: "About Us", lead: "At Haru Logistics Group we connect Honduras with key global markets. We offer end-to-end solutions, customs clearance, insurance and tracking to ensure your cargo arrives safe and on time.", experience: "10+ years", experienceLabel: "of experience", network: "120+", networkLabel: "partner ports", onTime: "95%", onTimeLabel: "on-time deliveries" },
+        services: { title: "Our Services", maritime: "Sea Freight", maritimeDesc: "Secure and efficient shipments to and from international ports, with continuous tracking.", air: "Air Freight", airDesc: "Fast and reliable delivery for urgent global cargo.", road: "Road Transport", roadDesc: "Regional and international distribution with route monitoring and ETA." },
+        tracking: { title: "Shipment Tracking", button: "Track" },
+        testimonials: {
+          title: "Testimonials",
+          lead: "What our clients say",
+          leave: "Leave a testimonial",
+          examples: [
+            {
+              quote: "Haru Logistics helped us reduce delivery times by 30% and handled customs efficiently.",
+              author: "Carlos Gómez",
+              role: "Exporter - AgroSula, Honduras",
+              countryFlag: "https://flagcdn.com/hn.svg"
+            },
+            {
+              quote: "Excellent communication and full visibility during the shipment — 100% recommended.",
+              author: "Maria Thompson",
+              role: "Purchasing Manager - Pacific Imports",
+              countryFlag: "https://flagcdn.com/us.svg"
+            },
+            {
+              quote: "Professional and reliable. They always meet deadlines and provide solutions when issues arise.",
+              author: "Jorge Rivera",
+              role: "Distributor - Rivera Foods",
+              countryFlag: "https://flagcdn.com/hn.svg"
+            }
+          ]
+        },
+        blog: {
+          title: "News & Updates",
+          item1: { title: "Route expansion 2025", desc: "Haru Logistics expands its maritime network with new international destinations." },
+          item2: { title: "Tracking technology", desc: "We implemented a real-time tracking system." },
+          item3: { title: "Excellence award", desc: "International recognition for operational efficiency in logistics." }
+        },
+        modal: { title: "Request a quote", close: "Close", send: "Send request" },
+        footer: { contactTitle: "Contact us", address: "📍 San Pedro Sula, Honduras", rights: "All rights reserved." },
+        location: {
+          title: "Location",
+          lead: "Our company is strategically located to offer international freight and local cargo transport efficiently.",
+          officeLabel: "Office",
+          office: "Residencial Villanova, Villanueva Cortes, Honduras",
+          hoursLabel: "Schedule",
+          hours: "Monday to Friday\nSaturday until midday."
+        }
+      }
+    };
+
+    // -------------------------
+    // Language switcher logic
+    // -------------------------
+    const elementsToTranslate = () => document.querySelectorAll('[data-i18n]');
+    let currentLang = 'es';
+
+    function applyTranslations(lang) {
+      currentLang = lang;
+      localStorage.setItem('haru_lang', lang); // remember preference
+      const dict = I18N[lang];
+
+      // Generic translation for elements with dot notation keys
+      elementsToTranslate().forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (!key) return;
+        const parts = key.split('.');
+        let val = dict;
+        for (let p of parts) {
+          if (val && (p in val)) val = val[p];
+          else { val = null; break; }
+        }
+        if (val === null || val === undefined) return;
+        if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea' || el.tagName.toLowerCase() === 'select') {
+          el.placeholder = val;
+        } else {
+          // Support newlines in translations for <span> or <p>
+          if (typeof val === 'string' && val.includes('\n')) {
+            el.innerHTML = val.split('\n').map(line => escapeHtml(line)).join('<br>');
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+
+      // Update dynamic testimonial grid
+      renderTestimonials(dict.testimonials.examples);
+
+      // accessibility: update aria-pressed
+      const esBtn = document.getElementById('langEs');
+      const enBtn = document.getElementById('langEn');
+      if (esBtn && enBtn) {
+        esBtn.classList.toggle('active', lang === 'es');
+        enBtn.classList.toggle('active', lang === 'en');
+        esBtn.setAttribute('aria-pressed', lang === 'es');
+        enBtn.setAttribute('aria-pressed', lang === 'en');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // initial translations (use saved preference if exists)
+      const savedLang = localStorage.getItem('haru_lang') || 'es';
+      applyTranslations(savedLang);
+
+      // language buttons
+      const langEsBtn = document.getElementById('langEs');
+      const langEnBtn = document.getElementById('langEn');
+      if (langEsBtn) langEsBtn.addEventListener('click', () => applyTranslations('es'));
+      if (langEnBtn) langEnBtn.addEventListener('click', () => applyTranslations('en'));
+
+      // set current year
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      // fade-in observer
+      const fadeElems = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+      }, { threshold: 0.15 });
+      fadeElems.forEach(el => observer.observe(el));
+
+      // Track form behavior
+      document.getElementById('trackForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const code = document.getElementById('trackingCode').value.trim().toUpperCase();
+        const result = document.getElementById('trackResult');
+        if (!code) return;
+        result.style.display = 'block';
+        if (currentLang === 'es') {
+          result.textContent = `El contenedor ${code} se encuentra en tránsito - Última actualización hace 2 horas.`;
+        } else {
+          result.textContent = `Container ${code} is in transit - Last update 2 hours ago.`;
+        }
+      });
+
+      // Quote form submit handler with spinner
+      const quoteForm = document.getElementById('quoteForm');
+      quoteForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const spinner = document.getElementById('spinner');
+        spinner.style.display = 'inline-block';
+        try {
+          const response = await fetch(quoteForm.action, {
+            method: 'POST',
+            body: new FormData(quoteForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          spinner.style.display = 'none';
+          if (response.ok) {
+            document.getElementById('formSuccess').classList.remove('d-none');
+            quoteForm.reset();
+          } else {
+            alert(currentLang === 'es' ? 'Ocurrió un error al enviar el formulario. Intenta nuevamente.' : 'There was an error sending the form. Please try again.');
+          }
+        } catch (err) {
+          spinner.style.display = 'none';
+          alert(currentLang === 'es' ? 'No se pudo conectar con el servidor.' : 'Could not connect to the server.');
+        }
+      });
+
+      // SHIP ICON FALLBACK: detect if Bootstrap Icon rendered; if not, replace with inline SVG
+      (function ensureShipIcon() {
+        try {
+          const test = document.createElement('i');
+          test.className = 'bi bi-ship';
+          test.style.position = 'absolute';
+          test.style.left = '-9999px';
+          document.body.appendChild(test);
+
+          const cs = window.getComputedStyle(test);
+          const fontFamily = cs && cs.fontFamily ? cs.fontFamily.toLowerCase() : '';
+          const rendered = test.offsetWidth > 0 && fontFamily.includes('bootstrap-icons');
+
+          document.body.removeChild(test);
+
+          if (!rendered) {
+            // Replace every element that uses the ship icon with inline SVG fallback
+            const ships = document.querySelectorAll('.bi-ship, .bi.bi-ship');
+            ships.forEach(el => {
+              const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+              svg.setAttribute('viewBox', '0 0 24 24');
+              svg.setAttribute('aria-hidden', 'true');
+              svg.className.baseVal = 'svg-icon ship-fallback';
+              svg.innerHTML = '<path d="M2 16s2-2 6-2 6 2 10 2 6-2 6-2v3H2v-3zM2 11l4-3 6 3 6-3 4 3v2l-4-1-6 1-6-1-4 1V11zM12 3l4 2-4 2-4-2 4-2z"/>';
+              svg.style.width = window.getComputedStyle(el).fontSize || '1.25rem';
+              svg.style.height = 'auto';
+              svg.style.marginRight = '0.5rem';
+              el.replaceWith(svg);
+            });
+
+            const serviceShips = Array.from(document.querySelectorAll('.service-card i.bi-ship, .service-icon.bi-ship')).filter(Boolean);
+            serviceShips.forEach(si => {
+              const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+              svg.setAttribute('viewBox', '0 0 24 24');
+              svg.setAttribute('aria-hidden', 'true');
+              svg.className.baseVal = 'svg-icon ship-fallback display-5';
+              svg.innerHTML = '<path d="M2 16s2-2 6-2 6 2 10 2 6-2 6-2v3H2v-3zM2 11l4-3 6 3 6-3 4 3v2l-4-1-6 1-6-1-4 1V11zM12 3l4 2-4 2-4-2 4-2z"/>';
+              si.replaceWith(svg);
+            });
+          }
+        } catch (err) {
+          console.error('Icon fallback check failed:', err);
+        }
+      })();
+    });
+
+    // -------------------------
+    // Testimonial rendering
+    // -------------------------
+    function renderTestimonials(items) {
+      const grid = document.getElementById('testimonialGrid');
+      grid.innerHTML = '';
+      items.forEach((t, idx) => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 fade-up';
+        const html = `
+          <div class="testimonial-card h-100" role="article" aria-label="Testimonial">
+            <p class="testimonial-quote">“${escapeHtml(t.quote)}”</p>
+            <div class="testimonial-meta">
+              <img src="${t.countryFlag || 'https://flagcdn.com/hn.svg'}" alt="" class="flag" onerror="this.style.display='none'">
+              <div class="testimonial-author">${escapeHtml(t.author)}</div>
+              <div class="testimonial-role">${escapeHtml(t.role)}</div>
+            </div>
+          </div>
+        `;
+        col.innerHTML = html;
+        grid.appendChild(col);
+      });
+
+      // observe new fade elements
+      const fadeElems = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+      }, { threshold: 0.15 });
+      fadeElems.forEach(el => observer.observe(el));
+    }
+
+    // small helper to prevent XSS in inserted strings (for safety)
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+    }
+
+    const translations = {
+      es: {
+        "services.title": "Nuestros Servicios",
+        "services.maritime.title": "Transporte Marítimo",
+        "services.maritime.desc": "Ofrecemos soluciones de transporte marítimo confiables para cargas internacionales.",
+        "services.air.title": "Transporte Aéreo",
+        "services.air.desc": "Envíe sus mercancías por vía aérea de manera rápida y segura.",
+        "services.land.title": "Transporte Terrestre",
+        "services.land.desc": "Coordinamos el transporte terrestre nacional e internacional con total eficiencia."
+      },
+      en: {
+        "services.title": "Our Services",
+        "services.maritime.title": "Maritime Transport",
+        "services.maritime.desc": "We provide reliable maritime transport solutions for international cargo.",
+        "services.air.title": "Air Transport",
+        "services.air.desc": "Send your goods quickly and safely by air.",
+        "services.land.title": "Land Transport",
+        "services.land.desc": "We coordinate domestic and international ground transportation efficiently."
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      localStorage.setItem("lang", lang);
+    }
+
+    document.getElementById("lang-es").addEventListener("click", () => changeLanguage("es"));
+    document.getElementById("lang-en").addEventListener("click", () => changeLanguage("en"));
+
+
+  </script>
+</body>
+
+</html>
