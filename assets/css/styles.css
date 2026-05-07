@@ -106,7 +106,17 @@ a {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  font-size: 1.35rem;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.nav-toggle::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 -6px 0 var(--ink), 0 6px 0 var(--ink);
 }
 
 .nav-menu {
@@ -215,10 +225,10 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) 380px;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: clamp(28px, 4vw, 48px);
   align-items: center;
-  padding: 76px 0 120px;
+  padding: clamp(36px, 7svh, 76px) 0 clamp(58px, 9svh, 100px);
 }
 
 .eyebrow {
@@ -243,14 +253,14 @@ a {
 .page-hero h1 {
   margin: 0;
   max-width: 780px;
-  font-size: clamp(2.65rem, 6vw, 5.8rem);
-  line-height: 0.98;
+  font-size: clamp(2.65rem, min(5.2vw, 8.4svh), 5.05rem);
+  line-height: 1.01;
   letter-spacing: 0;
 }
 
 .hero p {
   max-width: 660px;
-  margin: 22px 0 0;
+  margin: clamp(14px, 2.4svh, 22px) 0 0;
   color: #e7f0f8;
   font-size: clamp(1rem, 2vw, 1.18rem);
 }
@@ -259,14 +269,14 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: clamp(18px, 3svh, 32px);
 }
 
 .hero-panel {
   background: rgba(255, 255, 255, 0.94);
   color: var(--ink);
   border-radius: 8px;
-  padding: 24px;
+  padding: clamp(18px, 2.8svh, 24px);
   box-shadow: var(--shadow);
   min-width: 0;
 }
@@ -276,7 +286,7 @@ a {
   justify-content: space-between;
   gap: 16px;
   border-bottom: 1px solid var(--line);
-  padding: 14px 0;
+  padding: clamp(10px, 1.8svh, 14px) 0;
   min-width: 0;
 }
 
@@ -408,12 +418,15 @@ a {
 }
 
 .list-check li::before {
-  content: "✓";
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--green);
-  font-weight: 900;
+  left: 4px;
+  top: 0.42em;
+  width: 7px;
+  height: 12px;
+  border-right: 3px solid var(--green);
+  border-bottom: 3px solid var(--green);
+  transform: rotate(45deg);
 }
 
 .page-hero {
@@ -777,7 +790,7 @@ textarea {
   position: fixed;
   right: 18px;
   bottom: 18px;
-  z-index: 30;
+  z-index: 110;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -788,6 +801,86 @@ textarea {
   box-shadow: 0 14px 28px rgba(32, 179, 107, 0.35);
   text-decoration: none;
   font-weight: 900;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.whatsapp:hover {
+  background: #18a860;
+  box-shadow: 0 18px 34px rgba(32, 179, 107, 0.45);
+  transform: translateY(-2px);
+}
+
+.whatsapp svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+
+@media (max-width: 1080px) and (min-width: 901px) {
+  .nav {
+    gap: 10px;
+  }
+
+  .nav-menu {
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 8px 9px;
+  }
+
+  .brand span:last-child {
+    max-width: 128px;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 840px) {
+  .hero {
+    align-items: center;
+  }
+
+  .hero-grid {
+    padding: 28px 0 54px;
+  }
+
+  .hero h1 {
+    max-width: 720px;
+    font-size: clamp(2.6rem, min(4.7vw, 7.6svh), 4.45rem);
+  }
+
+  .hero p {
+    max-width: 620px;
+    font-size: 1.02rem;
+  }
+
+  .hero-panel {
+    padding: 18px 22px;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 700px) {
+  .hero-grid {
+    padding: 18px 0 38px;
+  }
+
+  .hero h1 {
+    max-width: 660px;
+    font-size: clamp(2.35rem, min(4.2vw, 7svh), 3.75rem);
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    margin-top: 12px;
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .hero-actions {
+    margin-top: 16px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -847,6 +940,12 @@ textarea {
     display: flex;
   }
 
+  .nav-link,
+  .nav-menu .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .language-toggle {
     width: 100%;
     min-height: 44px;
@@ -886,7 +985,7 @@ textarea {
   .page-hero {
     --hero-position: center center;
     align-items: flex-start;
-    padding-top: clamp(84px, 20vh, 150px);
+    padding-top: clamp(42px, 8svh, 84px);
   }
 
   .hero-panel {
@@ -911,17 +1010,18 @@ textarea {
   }
 
   .hero-grid {
-    padding: 58px 0 90px;
+    padding: 34px 0 72px;
   }
 
   .hero h1,
   .page-hero h1 {
-    font-size: 1.38rem;
-    line-height: 1.12;
+    font-size: clamp(2.15rem, 11vw, 3rem);
+    line-height: 1.02;
   }
 
+  .hero p,
   .page-hero p {
-    font-size: 0.96rem;
+    font-size: 1rem;
     line-height: 1.5;
   }
 
@@ -929,7 +1029,7 @@ textarea {
   .page-hero p,
   .hero h1,
   .hero p {
-    max-width: min(330px, calc(100vw - 36px));
+    max-width: 100%;
   }
 
   .section {
@@ -964,5 +1064,12 @@ textarea {
     display: block;
     margin-top: 3px;
     text-align: left;
+  }
+
+  .whatsapp {
+    right: 14px;
+    bottom: 14px;
+    width: 52px;
+    height: 52px;
   }
 }

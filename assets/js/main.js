@@ -1,6 +1,6 @@
-const CRM_STORAGE = "haru_crm_shipments";
-const LEAD_STORAGE = "haru_crm_leads";
-const LANGUAGE_STORAGE = "haru_language";
+const CRM_STORAGE = "kenneth_crm_shipments";
+const LEAD_STORAGE = "kenneth_crm_leads";
+const LANGUAGE_STORAGE = "kenneth_language";
 const firebaseConfig = {
   apiKey: "AIzaSyB7y6EYPf4pXVVOyGdJlurfOx02uRwThyk",
   authDomain: "kennethlogisticsgroup.firebaseapp.com",
@@ -17,28 +17,30 @@ let firestoreDb = null;
 const reps = ["Andrea Mejia", "Carlos Rivera", "Daniel Santos"];
 
 const statusFlow = ["booked", "docs", "transit", "customs", "delivered"];
+const demoShipmentIds = new Set(["s1", "s2", "s3"]);
+const demoLeadIds = new Set(["l1", "l2"]);
 
 const i18n = {
   es: {
     langLabel: "ES",
     langAria: "Cambiar idioma a ingles",
     title: {
-      index: "Haru Logistics Group | Logistica internacional desde Honduras",
-      servicios: "Servicios | Haru Logistics Group",
-      rutas: "Rutas y Cobertura | Haru Logistics Group",
-      seguimiento: "Seguimiento de Envios | Haru Logistics Group",
-      nosotros: "Nosotros | Haru Logistics Group",
-      contacto: "Contacto y Cotizacion | Haru Logistics Group",
-      crm: "CRM Interno | Haru Logistics Group",
+      index: "Kenneth Logistics Group | Logistica internacional desde Honduras",
+      servicios: "Servicios | Kenneth Logistics Group",
+      rutas: "Rutas y Cobertura | Kenneth Logistics Group",
+      seguimiento: "Seguimiento de Envios | Kenneth Logistics Group",
+      nosotros: "Nosotros | Kenneth Logistics Group",
+      contacto: "Contacto y Cotizacion | Kenneth Logistics Group",
+      crm: "CRM Interno | Kenneth Logistics Group",
     },
     meta: {
-      index: "Haru Logistics Group coordina transporte maritimo, aereo y terrestre, gestion aduanera, seguimiento y cotizaciones para carga internacional desde Honduras.",
+      index: "Kenneth Logistics Group coordina transporte maritimo, aereo y terrestre, gestion aduanera, seguimiento y cotizaciones para carga internacional desde Honduras.",
       servicios: "Servicios de transporte maritimo, aereo, terrestre, aduana, seguros y distribucion para carga internacional.",
       rutas: "Cobertura logistica desde Honduras hacia Norteamerica, Centroamerica, Europa y Asia con rutas maritimas, aereas y terrestres.",
-      seguimiento: "Consulta demostrativa de seguimiento de envios y explicacion de hitos logisticos para clientes de Haru Logistics Group.",
-      nosotros: "Conoce a Haru Logistics Group, operador logistico enfocado en coordinacion internacional, servicio al cliente y trazabilidad de carga.",
-      contacto: "Solicita una cotizacion logistica para transporte maritimo, aereo o terrestre con Haru Logistics Group.",
-      crm: "CRM interno de demostracion para reps y dueno de Haru Logistics Group.",
+      seguimiento: "Consulta de seguimiento de envios y explicacion de hitos logisticos para clientes de Kenneth Logistics Group.",
+      nosotros: "Conoce a Kenneth Logistics Group, operador logistico enfocado en coordinacion internacional, servicio al cliente y trazabilidad de carga.",
+      contacto: "Solicita una cotizacion logistica para transporte maritimo, aereo o terrestre con Kenneth Logistics Group.",
+      crm: "CRM interno para reps y dueno de Kenneth Logistics Group.",
     },
     status: {
       lead: "Lead nuevo",
@@ -61,10 +63,10 @@ const i18n = {
     dynamic: {
       demoCustomer: "Cliente web",
       noCompany: "Sin empresa",
-      demoNotice: "Solicitud registrada en el CRM demo. Un rep puede verla en la pagina CRM y convertirla en envio con tracking number.",
+      demoNotice: "Solicitud registrada en el CRM. Un rep puede verla en la pagina CRM y convertirla en envio con tracking number.",
       checkingStatus: "Consultando estado...",
       notFoundTitle: "No encontramos el tracking number {code}.",
-      notFoundBody: "Verifica que el codigo este escrito igual al que te envio tu ejecutivo. Tambien puedes probar HLG-2026-1840.",
+      notFoundBody: "Verifica que el codigo este escrito igual al que te envio tu ejecutivo.",
       toward: "hacia",
       etaUnknown: "Por confirmar",
       executive: "Ejecutivo",
@@ -75,6 +77,8 @@ const i18n = {
       authEnableEmail: "Activa Email/Password en Firebase Authentication para poder iniciar sesion.",
       authWeakPassword: "La contrasena debe tener al menos 6 caracteres.",
       authFailed: "No se pudo iniciar sesion: {message}",
+      emptyShipments: "Sin envios registrados todavia.",
+      emptyLeads: "Sin leads registrados todavia.",
     },
     trackingMessages: {
       booked: "La reserva fue creada y el embarque esta registrado.",
@@ -134,14 +138,14 @@ const i18n = {
         { selector: ".metric span", index: 2, text: "ejecutivo central para documentos, ruta, ETA y cotizacion." },
         { selector: ".section-soft .eyebrow", text: "Proceso" },
         { selector: ".split h2", text: "De la cotizacion al cierre de entrega." },
-        { selector: ".split p", index: 1, text: "El sitio comunica un flujo simple: el cliente solicita una cotizacion, Haru valida la ruta, coordina la operacion y mantiene informado al cliente hasta la entrega." },
+        { selector: ".split p", index: 1, text: "El sitio comunica un flujo simple: el cliente solicita una cotizacion, Kenneth Logistics Group valida la ruta, coordina la operacion y mantiene informado al cliente hasta la entrega." },
         { selector: ".list-check li", index: 0, text: "Recepcion de datos de carga, peso, volumen, origen y destino." },
         { selector: ".list-check li", index: 1, text: "Seleccion de modalidad segun urgencia, costo y tipo de mercancia." },
         { selector: ".list-check li", index: 2, text: "Coordinacion documental, aduanera y seguimiento de hitos." },
         { selector: ".footer p", index: 0, text: "Soluciones logisticas internacionales para empresas que necesitan mover carga con orden, trazabilidad y soporte humano." },
         { selector: ".footer h3", index: 0, text: "Mapa" },
         { selector: ".footer h3", index: 1, text: "Contacto" },
-        { selector: ".footer small", text: "© 2026 Haru Logistics Group. Todos los derechos reservados." },
+        { selector: ".footer small", text: "© 2026 Kenneth Logistics Group. Todos los derechos reservados." },
       ],
       servicios: [
         { selector: ".page-hero .eyebrow", text: "Servicios" },
@@ -205,11 +209,11 @@ const i18n = {
       seguimiento: [
         { selector: ".page-hero .eyebrow", text: "Seguimiento" },
         { selector: ".page-hero h1", text: "El cliente no solo quiere enviar: quiere saber donde esta su carga." },
-        { selector: ".page-hero p", index: 1, text: "Esta seccion consulta los envios creados en el CRM demo. En produccion se conectaria a una base de datos para que funcione desde cualquier dispositivo." },
+        { selector: ".page-hero p", index: 1, text: "Esta seccion consulta los envios creados en el CRM para que el cliente pueda revisar el estado desde cualquier dispositivo." },
         { selector: ".tracking-box h2", text: "Rastrear envio" },
-        { selector: ".tracking-box p", html: "Prueba con <strong>HLG-2026-1840</strong>. Cuando un ejecutivo crea un envio en el sistema interno, el cliente puede consultar aqui su tracking number." },
+        { selector: ".tracking-box p", html: "Cuando un ejecutivo crea un envio en el sistema interno, el cliente puede consultar aqui su tracking number." },
         { labelForSelector: "[data-tracking-form] input", text: "Codigo de rastreo" },
-        { selector: "[data-tracking-form] input", attr: "placeholder", text: "HLG-2026-1840" },
+        { selector: "[data-tracking-form] input", attr: "placeholder", text: "KLG-2026-0000" },
         { selector: "[data-tracking-form] button", text: "Consultar estado" },
         { selector: ".split > div:nth-child(2) .eyebrow", text: "Por que importa" },
         { selector: ".split > div:nth-child(2) h2", text: "El seguimiento reduce llamadas, dudas y desconfianza." },
@@ -217,7 +221,7 @@ const i18n = {
         { selector: ".list-check li", index: 0, text: "El cliente puede consultar avances sin esperar una llamada." },
         { selector: ".list-check li", index: 1, text: "El equipo comercial puede centralizar preguntas frecuentes." },
         { selector: ".list-check li", index: 2, text: "La empresa proyecta orden operativo y capacidad tecnologica." },
-        { selector: ".footer p", index: 0, text: "Seguimiento demostrativo para comunicar trazabilidad y confianza." },
+        { selector: ".footer p", index: 0, text: "Seguimiento para comunicar trazabilidad y confianza." },
         { selector: ".footer h3", index: 0, text: "Cliente" },
         { selector: ".footer p", index: 1, html: "Consulta de estado<br>Hitos de carga<br>Soporte operativo" },
         { selector: ".footer h3", index: 1, text: "Contacto" },
@@ -228,7 +232,7 @@ const i18n = {
         { selector: ".page-hero h1", text: "Una logistica mas humana, ordenada y visible." },
         { selector: ".page-hero p", index: 1, text: "Esta pagina ayuda a vender confianza: explica quien es la empresa, como trabaja y por que un cliente deberia dejar su carga en sus manos." },
         { selector: ".split .eyebrow", text: "Perfil" },
-        { selector: ".split h2", text: "Haru Logistics Group acompana operaciones de carga de principio a fin." },
+        { selector: ".split h2", text: "Kenneth Logistics Group acompana operaciones de carga de principio a fin." },
         { selector: ".split p", index: 1, text: "La empresa se presenta como un aliado logistico para importadores, exportadores, distribuidores y negocios que necesitan coordinar transporte internacional con menos friccion." },
         { selector: ".list-check li", index: 0, text: "Comunicacion clara durante cada etapa del embarque." },
         { selector: ".list-check li", index: 1, text: "Coordinacion con proveedores, agentes, navieras y transportistas." },
@@ -250,7 +254,7 @@ const i18n = {
         { selector: ".page-hero h1", text: "Cotiza tu proximo embarque con datos claros." },
         { selector: ".page-hero p", index: 1, text: "Esta pagina es la mas importante comercialmente: convierte el interes del visitante en una solicitud que el equipo puede responder." },
         { selector: ".card h2", index: 0, text: "Solicitud de cotizacion" },
-        { selector: ".card p", index: 0, text: "Mientras no exista backend, este formulario funciona como demostracion. Despues puede conectarse a correo, WhatsApp, Google Sheets, CRM o base de datos." },
+        { selector: ".card p", index: 0, text: "Este formulario registra solicitudes para que el equipo pueda dar seguimiento comercial desde el CRM." },
         { labelFor: "nombre", text: "Nombre" },
         { labelFor: "empresa", text: "Empresa" },
         { labelFor: "correo", text: "Correo" },
@@ -268,7 +272,7 @@ const i18n = {
         { selector: "[data-demo-form] button", text: "Enviar solicitud" },
         { selector: "aside .card h2", text: "Informacion directa" },
         { selector: "aside .card p", index: 0, html: "<strong>Ubicacion:</strong><br>Residencial Villanova, Villanueva, Cortes, Honduras" },
-        { selector: "aside .card p", index: 1, html: "<strong>Correo:</strong><br><a href=\"mailto:info@harulogisticsgroup.com\">info@harulogisticsgroup.com</a>" },
+        { selector: "aside .card p", index: 1, html: "<strong>Correo:</strong><br><a href=\"mailto:info@kennethlogisticsgroup.com\">info@kennethlogisticsgroup.com</a>" },
         { selector: "aside .card p", index: 2, html: "<strong>WhatsApp:</strong><br><a href=\"https://wa.me/50499803341\">+504 9980-3341</a>" },
         { selector: "aside .card p", index: 3, html: "<strong>Horario:</strong><br>Lunes a viernes. Sabado hasta mediodia." },
         { selector: "aside .card h3", text: "Que debe enviar el cliente" },
@@ -297,7 +301,6 @@ const i18n = {
         { optionTexts: "[data-role]", texts: ["Rep / Ejecutivo", "Dueno / Gerencia"] },
         { labelForSelector: "[data-rep-filter]", text: "Rep" },
         { optionTexts: "[data-rep-filter]", texts: ["Todos"] },
-        { selector: "[data-reset-demo]", text: "Reiniciar datos demo" },
         { selector: ".crm-kpi span", index: 0, text: "Cargas activas" },
         { selector: ".crm-kpi span", index: 1, text: "Entregadas" },
         { selector: ".crm-kpi span", index: 2, text: "Leads" },
@@ -340,7 +343,7 @@ const i18n = {
         { selector: ".crm-panel .eyebrow", index: 2, text: "Ventas" },
         { selector: ".crm-panel h2", index: 2, text: "Leads y oportunidades." },
         { tableHeaders: ".crm-panel:nth-of-type(3) th", texts: ["Empresa", "Contacto", "Ruta", "Servicio", "Rep", "Etapa"] },
-        { selector: ".footer p", index: 0, text: "CRM demo para controlar leads, reps, envios, estados y tracking numbers." },
+        { selector: ".footer p", index: 0, text: "CRM para controlar leads, reps, envios, estados y tracking numbers." },
         { selector: ".footer h3", index: 0, text: "Paneles" },
         { selector: ".footer p", index: 1, html: "Rep<br>Dueno<br>Operaciones" },
         { selector: ".footer h3", index: 1, text: "Cliente" },
@@ -352,22 +355,22 @@ const i18n = {
     langLabel: "EN",
     langAria: "Switch language to Spanish",
     title: {
-      index: "Haru Logistics Group | International Logistics from Honduras",
-      servicios: "Services | Haru Logistics Group",
-      rutas: "Routes and Coverage | Haru Logistics Group",
-      seguimiento: "Shipment Tracking | Haru Logistics Group",
-      nosotros: "About Us | Haru Logistics Group",
-      contacto: "Contact and Quotes | Haru Logistics Group",
-      crm: "Internal CRM | Haru Logistics Group",
+      index: "Kenneth Logistics Group | International Logistics from Honduras",
+      servicios: "Services | Kenneth Logistics Group",
+      rutas: "Routes and Coverage | Kenneth Logistics Group",
+      seguimiento: "Shipment Tracking | Kenneth Logistics Group",
+      nosotros: "About Us | Kenneth Logistics Group",
+      contacto: "Contact and Quotes | Kenneth Logistics Group",
+      crm: "Internal CRM | Kenneth Logistics Group",
     },
     meta: {
-      index: "Haru Logistics Group coordinates ocean, air, and ground transportation, customs support, tracking, and quotes for international cargo from Honduras.",
+      index: "Kenneth Logistics Group coordinates ocean, air, and ground transportation, customs support, tracking, and quotes for international cargo from Honduras.",
       servicios: "Ocean, air, ground, customs, insurance, and distribution services for international cargo.",
       rutas: "Logistics coverage from Honduras to North America, Central America, Europe, and Asia with ocean, air, and ground routes.",
-      seguimiento: "Demo shipment tracking lookup and logistics milestone explanations for Haru Logistics Group clients.",
-      nosotros: "Meet Haru Logistics Group, a logistics operator focused on international coordination, customer service, and cargo visibility.",
-      contacto: "Request a logistics quote for ocean, air, or ground transportation with Haru Logistics Group.",
-      crm: "Internal demo CRM for Haru Logistics Group reps and owner.",
+      seguimiento: "Shipment tracking lookup and logistics milestone explanations for Kenneth Logistics Group clients.",
+      nosotros: "Meet Kenneth Logistics Group, a logistics operator focused on international coordination, customer service, and cargo visibility.",
+      contacto: "Request a logistics quote for ocean, air, or ground transportation with Kenneth Logistics Group.",
+      crm: "Internal CRM for Kenneth Logistics Group reps and owner.",
     },
     status: {
       lead: "New lead",
@@ -390,10 +393,10 @@ const i18n = {
     dynamic: {
       demoCustomer: "Web customer",
       noCompany: "No company",
-      demoNotice: "Request saved in the demo CRM. A rep can view it on the CRM page and convert it into a shipment with a tracking number.",
+      demoNotice: "Request saved in the CRM. A rep can view it on the CRM page and convert it into a shipment with a tracking number.",
       checkingStatus: "Checking status...",
       notFoundTitle: "We could not find tracking number {code}.",
-      notFoundBody: "Check that the code matches the one your account executive sent you. You can also try HLG-2026-1840.",
+      notFoundBody: "Check that the code matches the one your account executive sent you.",
       toward: "to",
       etaUnknown: "To be confirmed",
       executive: "Executive",
@@ -404,6 +407,8 @@ const i18n = {
       authEnableEmail: "Enable Email/Password in Firebase Authentication before signing in.",
       authWeakPassword: "The password must be at least 6 characters long.",
       authFailed: "Could not sign in: {message}",
+      emptyShipments: "No shipments registered yet.",
+      emptyLeads: "No leads registered yet.",
     },
     trackingMessages: {
       booked: "The booking was created and the shipment is registered.",
@@ -463,14 +468,14 @@ const i18n = {
         { selector: ".metric span", index: 2, text: "central executive for documents, route, ETA, and quote." },
         { selector: ".section-soft .eyebrow", text: "Process" },
         { selector: ".split h2", text: "From quote to delivery closeout." },
-        { selector: ".split p", index: 1, text: "The site communicates a simple flow: the client requests a quote, Haru validates the route, coordinates the operation, and keeps the client informed until delivery." },
+        { selector: ".split p", index: 1, text: "The site communicates a simple flow: the client requests a quote, Kenneth Logistics Group validates the route, coordinates the operation, and keeps the client informed until delivery." },
         { selector: ".list-check li", index: 0, text: "Receive cargo data, weight, volume, origin, and destination." },
         { selector: ".list-check li", index: 1, text: "Select the mode based on urgency, cost, and cargo type." },
         { selector: ".list-check li", index: 2, text: "Coordinate documents, customs, and milestone tracking." },
         { selector: ".footer p", index: 0, text: "International logistics solutions for companies that need to move cargo with order, visibility, and human support." },
         { selector: ".footer h3", index: 0, text: "Map" },
         { selector: ".footer h3", index: 1, text: "Contact" },
-        { selector: ".footer small", text: "© 2026 Haru Logistics Group. All rights reserved." },
+        { selector: ".footer small", text: "© 2026 Kenneth Logistics Group. All rights reserved." },
       ],
       servicios: [
         { selector: ".page-hero .eyebrow", text: "Services" },
@@ -534,11 +539,11 @@ const i18n = {
       seguimiento: [
         { selector: ".page-hero .eyebrow", text: "Tracking" },
         { selector: ".page-hero h1", text: "Clients do not only want to ship: they want to know where their cargo is." },
-        { selector: ".page-hero p", index: 1, text: "This section looks up shipments created in the demo CRM. In production it would connect to a database so it works from any device." },
+        { selector: ".page-hero p", index: 1, text: "This section looks up shipments created in the CRM so clients can review status from any device." },
         { selector: ".tracking-box h2", text: "Track shipment" },
-        { selector: ".tracking-box p", html: "Try <strong>HLG-2026-1840</strong>. When an executive creates a shipment in the internal system, the client can check the tracking number here." },
+        { selector: ".tracking-box p", html: "When an executive creates a shipment in the internal system, the client can check the tracking number here." },
         { labelForSelector: "[data-tracking-form] input", text: "Tracking code" },
-        { selector: "[data-tracking-form] input", attr: "placeholder", text: "HLG-2026-1840" },
+        { selector: "[data-tracking-form] input", attr: "placeholder", text: "KLG-2026-0000" },
         { selector: "[data-tracking-form] button", text: "Check status" },
         { selector: ".split > div:nth-child(2) .eyebrow", text: "Why it matters" },
         { selector: ".split > div:nth-child(2) h2", text: "Tracking reduces calls, questions, and uncertainty." },
@@ -546,7 +551,7 @@ const i18n = {
         { selector: ".list-check li", index: 0, text: "Clients can check progress without waiting for a call." },
         { selector: ".list-check li", index: 1, text: "The commercial team can centralize frequent questions." },
         { selector: ".list-check li", index: 2, text: "The company projects operational order and technology capacity." },
-        { selector: ".footer p", index: 0, text: "Demo tracking to communicate visibility and trust." },
+        { selector: ".footer p", index: 0, text: "Tracking to communicate visibility and trust." },
         { selector: ".footer h3", index: 0, text: "Client" },
         { selector: ".footer p", index: 1, html: "Status lookup<br>Cargo milestones<br>Operational support" },
         { selector: ".footer h3", index: 1, text: "Contact" },
@@ -557,7 +562,7 @@ const i18n = {
         { selector: ".page-hero h1", text: "More human, organized, and visible logistics." },
         { selector: ".page-hero p", index: 1, text: "This page helps sell trust: it explains who the company is, how it works, and why a client should place cargo in its hands." },
         { selector: ".split .eyebrow", text: "Profile" },
-        { selector: ".split h2", text: "Haru Logistics Group supports cargo operations from start to finish." },
+        { selector: ".split h2", text: "Kenneth Logistics Group supports cargo operations from start to finish." },
         { selector: ".split p", index: 1, text: "The company is presented as a logistics ally for importers, exporters, distributors, and businesses that need to coordinate international transport with less friction." },
         { selector: ".list-check li", index: 0, text: "Clear communication during every shipment stage." },
         { selector: ".list-check li", index: 1, text: "Coordination with providers, agents, carriers, and transport companies." },
@@ -579,7 +584,7 @@ const i18n = {
         { selector: ".page-hero h1", text: "Quote your next shipment with clear details." },
         { selector: ".page-hero p", index: 1, text: "This is the most commercially important page: it turns visitor interest into a request the team can answer." },
         { selector: ".card h2", index: 0, text: "Quote request" },
-        { selector: ".card p", index: 0, text: "While there is no backend, this form works as a demo. Later it can connect to email, WhatsApp, Google Sheets, CRM, or a database." },
+        { selector: ".card p", index: 0, text: "This form records requests so the team can follow up commercially from the CRM." },
         { labelFor: "nombre", text: "Name" },
         { labelFor: "empresa", text: "Company" },
         { labelFor: "correo", text: "Email" },
@@ -597,7 +602,7 @@ const i18n = {
         { selector: "[data-demo-form] button", text: "Send request" },
         { selector: "aside .card h2", text: "Direct information" },
         { selector: "aside .card p", index: 0, html: "<strong>Location:</strong><br>Residencial Villanova, Villanueva, Cortes, Honduras" },
-        { selector: "aside .card p", index: 1, html: "<strong>Email:</strong><br><a href=\"mailto:info@harulogisticsgroup.com\">info@harulogisticsgroup.com</a>" },
+        { selector: "aside .card p", index: 1, html: "<strong>Email:</strong><br><a href=\"mailto:info@kennethlogisticsgroup.com\">info@kennethlogisticsgroup.com</a>" },
         { selector: "aside .card p", index: 2, html: "<strong>WhatsApp:</strong><br><a href=\"https://wa.me/50499803341\">+504 9980-3341</a>" },
         { selector: "aside .card p", index: 3, html: "<strong>Hours:</strong><br>Monday to Friday. Saturday until noon." },
         { selector: "aside .card h3", text: "What the client should send" },
@@ -626,7 +631,6 @@ const i18n = {
         { optionTexts: "[data-role]", texts: ["Rep / Executive", "Owner / Management"] },
         { labelForSelector: "[data-rep-filter]", text: "Rep" },
         { optionTexts: "[data-rep-filter]", texts: ["All"] },
-        { selector: "[data-reset-demo]", text: "Reset demo data" },
         { selector: ".crm-kpi span", index: 0, text: "Active shipments" },
         { selector: ".crm-kpi span", index: 1, text: "Delivered" },
         { selector: ".crm-kpi span", index: 2, text: "Leads" },
@@ -669,7 +673,7 @@ const i18n = {
         { selector: ".crm-panel .eyebrow", index: 2, text: "Sales" },
         { selector: ".crm-panel h2", index: 2, text: "Leads and opportunities." },
         { tableHeaders: ".crm-panel:nth-of-type(3) th", texts: ["Company", "Contact", "Route", "Service", "Rep", "Stage"] },
-        { selector: ".footer p", index: 0, text: "Demo CRM to control leads, reps, shipments, statuses, and tracking numbers." },
+        { selector: ".footer p", index: 0, text: "CRM to control leads, reps, shipments, statuses, and tracking numbers." },
         { selector: ".footer h3", index: 0, text: "Panels" },
         { selector: ".footer p", index: 1, html: "Rep<br>Owner<br>Operations" },
         { selector: ".footer h3", index: 1, text: "Client" },
@@ -678,91 +682,6 @@ const i18n = {
     },
   },
 };
-
-const seedShipments = [
-  {
-    id: "s1",
-    tracking: "HLG-2026-1840",
-    customer: "Kenneth Logistics Test",
-    contact: "Kenneth",
-    email: "kenneth@example.com",
-    phone: "+504 9980-3341",
-    rep: "Andrea Mejia",
-    service: "Maritimo",
-    origin: "Puerto Cortes, Honduras",
-    destination: "Miami, Estados Unidos",
-    status: "transit",
-    eta: "2026-05-12",
-    value: 1850,
-    notes: "Envio de prueba para Kenneth con documentacion validada.",
-    updatedAt: "2026-05-06 09:30",
-  },
-  {
-    id: "s2",
-    tracking: "HLG-2026-2215",
-    customer: "Pacific Imports",
-    contact: "Maria Thompson",
-    email: "maria@pacificimports.com",
-    phone: "+1 305 555 0130",
-    rep: "Carlos Rivera",
-    service: "Aereo",
-    origin: "San Pedro Sula, Honduras",
-    destination: "Madrid, Espana",
-    status: "customs",
-    eta: "2026-05-09",
-    value: 920,
-    notes: "Carga urgente en proceso de liberacion.",
-    updatedAt: "2026-05-06 11:10",
-  },
-  {
-    id: "s3",
-    tracking: "HLG-2026-3098",
-    customer: "Rivera Foods",
-    contact: "Jorge Rivera",
-    email: "jorge@riverafoods.com",
-    phone: "+504 2234-1000",
-    rep: "Daniel Santos",
-    service: "Terrestre",
-    origin: "Villanueva, Honduras",
-    destination: "Guatemala City, Guatemala",
-    status: "delivered",
-    eta: "2026-05-05",
-    value: 640,
-    notes: "Entrega final confirmada por cliente.",
-    updatedAt: "2026-05-05 16:45",
-  },
-];
-
-const seedLeads = [
-  {
-    id: "l1",
-    name: "Laura Martinez",
-    company: "Textiles Norte",
-    email: "laura@textilesnorte.com",
-    phone: "+504 9999-1001",
-    origin: "Honduras",
-    destination: "Mexico",
-    service: "Maritimo",
-    rep: "Andrea Mejia",
-    status: "quoted",
-    notes: "Solicita costo para carga mensual.",
-    createdAt: "2026-05-06",
-  },
-  {
-    id: "l2",
-    name: "Roberto Diaz",
-    company: "Repuestos RD",
-    email: "roberto@repuestosrd.com",
-    phone: "+504 9999-1002",
-    origin: "Estados Unidos",
-    destination: "Honduras",
-    service: "Aereo",
-    rep: "Carlos Rivera",
-    status: "lead",
-    notes: "Necesita importar repuestos pequenos.",
-    createdAt: "2026-05-06",
-  },
-];
 
 function readStore(key, fallback) {
   const raw = localStorage.getItem(key);
@@ -784,7 +703,7 @@ function writeStore(key, value) {
 }
 
 function getShipments() {
-  return readStore(CRM_STORAGE, seedShipments);
+  return readStore(CRM_STORAGE, []).filter((item) => !demoShipmentIds.has(item.id));
 }
 
 function setShipments(shipments) {
@@ -792,7 +711,7 @@ function setShipments(shipments) {
 }
 
 function getLeads() {
-  return readStore(LEAD_STORAGE, seedLeads);
+  return readStore(LEAD_STORAGE, []).filter((item) => !demoLeadIds.has(item.id));
 }
 
 function setLeads(leads) {
@@ -811,13 +730,13 @@ function initFirebase() {
 async function fetchShipmentsFromFirestore() {
   if (!firestoreDb) return null;
   const snap = await firestoreDb.collection("shipments").orderBy("updatedAt", "desc").get();
-  return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() })).filter((item) => !demoShipmentIds.has(item.id));
 }
 
 async function fetchLeadsFromFirestore() {
   if (!firestoreDb) return null;
   const snap = await firestoreDb.collection("leads").orderBy("createdAt", "desc").get();
-  return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() })).filter((item) => !demoLeadIds.has(item.id));
 }
 
 async function saveShipmentToFirestore(shipment) {
@@ -826,7 +745,7 @@ async function saveShipmentToFirestore(shipment) {
 }
 
 async function saveLeadToFirestore(lead) {
-  if (!firestoreDb || !firebaseAuth || !firebaseAuth.currentUser) return;
+  if (!firestoreDb) return;
   await firestoreDb.collection("leads").doc(lead.id).set(lead, { merge: true });
 }
 
@@ -837,10 +756,11 @@ async function findShipmentByTracking(code) {
       const snap = await firestoreDb.collection("shipments").where("tracking", "==", code).limit(1).get();
       if (!snap.empty) {
         const doc = snap.docs[0];
+        if (demoShipmentIds.has(doc.id)) return null;
         return { id: doc.id, ...doc.data() };
       }
     } catch (error) {
-      console.warn("Firestore tracking lookup failed, using local demo data.", error);
+      console.warn("Firestore tracking lookup failed, using local data.", error);
     }
   }
 
@@ -861,7 +781,7 @@ function todayStamp() {
 function generateTracking() {
   const year = new Date().getFullYear();
   const code = Math.floor(1000 + Math.random() * 9000);
-  return `HLG-${year}-${code}`;
+  return `KLG-${year}-${code}`;
 }
 
 function newId(prefix) {
@@ -1058,6 +978,7 @@ if (toggle && menu) {
 document.querySelectorAll("[data-demo-form]").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    initFirebase();
     const data = Object.fromEntries(new FormData(form).entries());
     const leads = getLeads();
     const lead = {
@@ -1076,6 +997,7 @@ document.querySelectorAll("[data-demo-form]").forEach((form) => {
     };
     leads.unshift(lead);
     setLeads(leads);
+    saveLeadToFirestore(lead).catch((error) => console.warn("Public lead sync failed.", error));
 
     const notice = form.querySelector(".notice") || document.querySelector(`#${form.dataset.notice}`);
     if (notice) {
@@ -1228,18 +1150,10 @@ async function hydrateCrmFromFirestore() {
 
   try {
     let [shipments, leads] = await Promise.all([fetchShipmentsFromFirestore(), fetchLeadsFromFirestore()]);
-    if (!shipments || shipments.length === 0) {
-      await Promise.all(seedShipments.map((shipment) => saveShipmentToFirestore(shipment)));
-      shipments = seedShipments;
-    }
-    if (!leads || leads.length === 0) {
-      await Promise.all(seedLeads.map((lead) => saveLeadToFirestore(lead)));
-      leads = seedLeads;
-    }
-    setShipments(shipments);
-    setLeads(leads);
+    setShipments(shipments || []);
+    setLeads(leads || []);
   } catch (error) {
-    console.warn("Firestore CRM load failed, using local demo data.", error);
+    console.warn("Firestore CRM load failed, using local data.", error);
   }
 }
 
@@ -1254,7 +1168,9 @@ function initCrm() {
   const repSelect = document.querySelector("[data-rep-filter]");
   const shipmentForm = document.querySelector("[data-shipment-form]");
   const leadForm = document.querySelector("[data-lead-form]");
-  const resetButton = document.querySelector("[data-reset-demo]");
+  const allRepsOption = repSelect.querySelector("option");
+
+  if (allRepsOption) allRepsOption.value = "all";
 
   reps.forEach((rep) => {
     repSelect.insertAdjacentHTML("beforeend", `<option>${rep}</option>`);
@@ -1318,16 +1234,6 @@ function initCrm() {
     renderCrm();
   });
 
-  resetButton.addEventListener("click", () => {
-    setShipments(seedShipments);
-    setLeads(seedLeads);
-    Promise.all([
-      ...seedShipments.map((shipment) => saveShipmentToFirestore(shipment)),
-      ...seedLeads.map((lead) => saveLeadToFirestore(lead)),
-    ]).catch((error) => console.warn("Demo reset sync failed.", error));
-    renderCrm();
-  });
-
   document.addEventListener("change", (event) => {
     if (!event.target.matches("[data-status-update]")) return;
     const shipments = getShipments();
@@ -1352,7 +1258,7 @@ function crmContext() {
 
 function visibleRecords(records) {
   const { owner, rep } = crmContext();
-  if (owner || rep === "Todos") return records;
+  if (owner || rep === "all" || rep === "Todos" || rep === "All") return records;
   return records.filter((item) => item.rep === rep);
 }
 
@@ -1378,6 +1284,11 @@ function renderKpis(shipments, leads) {
 
 function renderShipmentTable(shipments) {
   const tbody = document.querySelector("[data-shipments-table]");
+  if (shipments.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7"><span>${phrase("emptyShipments")}</span></td></tr>`;
+    return;
+  }
+
   tbody.innerHTML = shipments.map((item) => `
     <tr>
       <td><strong><a href="seguimiento.html?track=${encodeURIComponent(item.tracking)}">${escapeHtml(item.tracking)}</a></strong><br><span>${escapeHtml(serviceLabel(item.service))}</span></td>
@@ -1397,6 +1308,11 @@ function renderShipmentTable(shipments) {
 
 function renderLeadTable(leads) {
   const tbody = document.querySelector("[data-leads-table]");
+  if (leads.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6"><span>${phrase("emptyLeads")}</span></td></tr>`;
+    return;
+  }
+
   tbody.innerHTML = leads.map((item) => `
     <tr>
       <td><strong>${escapeHtml(item.company)}</strong><br><span>${escapeHtml(item.name)}</span></td>

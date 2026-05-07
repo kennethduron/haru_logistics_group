@@ -8,7 +8,51 @@ service cloud.firestore {
     }
 
     match /leads/{leadId} {
-      allow read, create, update, delete: if request.auth != null;
+      allow read, update, delete: if request.auth != null;
+      allow create: if isValidLead();
     }
+  }
+
+  function isValidLead() {
+    return request.resource.data.keys().hasOnly([
+        "id",
+        "name",
+        "company",
+        "email",
+        "phone",
+        "origin",
+        "destination",
+        "service",
+        "rep",
+        "status",
+        "notes",
+        "createdAt"
+      ])
+      && request.resource.data.id is string
+      && request.resource.data.id.size() <= 80
+      && request.resource.data.name is string
+      && request.resource.data.name.size() >= 1
+      && request.resource.data.name.size() <= 120
+      && request.resource.data.company is string
+      && request.resource.data.company.size() <= 120
+      && request.resource.data.email is string
+      && request.resource.data.email.size() >= 3
+      && request.resource.data.email.size() <= 160
+      && request.resource.data.phone is string
+      && request.resource.data.phone.size() >= 3
+      && request.resource.data.phone.size() <= 60
+      && request.resource.data.origin is string
+      && request.resource.data.origin.size() <= 160
+      && request.resource.data.destination is string
+      && request.resource.data.destination.size() <= 160
+      && request.resource.data["service"] is string
+      && request.resource.data["service"].size() <= 80
+      && request.resource.data.rep is string
+      && request.resource.data.rep.size() <= 120
+      && request.resource.data.status == "lead"
+      && request.resource.data.notes is string
+      && request.resource.data.notes.size() <= 1200
+      && request.resource.data.createdAt is string
+      && request.resource.data.createdAt.size() <= 20;
   }
 }
