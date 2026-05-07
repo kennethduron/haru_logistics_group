@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto y Cotización | Haru Logistics Group</title>
+  <meta name="description" content="Solicita una cotización logística para transporte marítimo, aéreo o terrestre con Haru Logistics Group.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="index.html"><span class="brand-mark">HL</span><span>Haru Logistics Group</span></a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="nav-menu">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="servicios.html">Servicios</a>
+        <a class="nav-link" href="rutas.html">Rutas</a>
+        <a class="nav-link" href="seguimiento.html">Seguimiento</a>
+        <a class="nav-link" href="nosotros.html">Nosotros</a>
+        <a class="nav-link active" href="contacto.html">Contacto</a>
+        <a class="btn btn-primary" href="#cotizar">Cotizar</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero" style="--hero-image: url('../../images/image2.jpg')">
+      <div class="container">
+        <p class="eyebrow">Contacto</p>
+        <h1>Cotiza tu próximo embarque con datos claros.</h1>
+        <p>Esta página es la más importante comercialmente: convierte el interés del visitante en una solicitud que el equipo puede responder.</p>
+      </div>
+    </section>
+
+    <section id="cotizar" class="section section-soft">
+      <div class="container grid-2">
+        <div class="card">
+          <div class="card-body">
+            <h2>Solicitud de cotización</h2>
+            <p>Mientras no exista backend, este formulario funciona como demostración. Después puede conectarse a correo, WhatsApp, Google Sheets, CRM o base de datos.</p>
+            <form class="form" data-demo-form>
+              <div class="form-grid">
+                <label>Nombre
+                  <input type="text" name="nombre" required>
+                </label>
+                <label>Empresa
+                  <input type="text" name="empresa">
+                </label>
+              </div>
+              <div class="form-grid">
+                <label>Correo
+                  <input type="email" name="correo" required>
+                </label>
+                <label>Teléfono
+                  <input type="tel" name="telefono" required>
+                </label>
+              </div>
+              <div class="form-grid">
+                <label>Origen
+                  <input type="text" name="origen" placeholder="Ciudad / país" required>
+                </label>
+                <label>Destino
+                  <input type="text" name="destino" placeholder="Ciudad / país" required>
+                </label>
+              </div>
+              <div class="form-grid">
+                <label>Tipo de flete
+                  <select name="tipo" required>
+                    <option value="">Seleccionar</option>
+                    <option>Marítimo</option>
+                    <option>Aéreo</option>
+                    <option>Terrestre</option>
+                    <option>Multimodal</option>
+                  </select>
+                </label>
+                <label>Peso o volumen
+                  <input type="text" name="peso" placeholder="Ej. 500 kg / 4 m³">
+                </label>
+              </div>
+              <label>Detalles de la carga
+                <textarea name="detalles" placeholder="Producto, medidas, fecha ideal, documentos disponibles..." required></textarea>
+              </label>
+              <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+              <div class="notice"></div>
+            </form>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <div class="card-body">
+              <h2>Información directa</h2>
+              <p><strong>Ubicación:</strong><br>Residencial Villanova, Villanueva, Cortés, Honduras</p>
+              <p><strong>Correo:</strong><br><a href="mailto:info@harulogisticsgroup.com">info@harulogisticsgroup.com</a></p>
+              <p><strong>WhatsApp:</strong><br><a href="https://wa.me/50499803341">+504 9980-3341</a></p>
+              <p><strong>Horario:</strong><br>Lunes a viernes. Sábado hasta mediodía.</p>
+            </div>
+          </div>
+          <div class="card" style="margin-top:22px">
+            <img src="images/image4.png" alt="Reconocimiento logístico internacional">
+            <div class="card-body">
+              <h3>Qué debe enviar el cliente</h3>
+              <p>Origen, destino, descripción de mercancía, peso, volumen, fecha deseada y si requiere aduana, seguro o entrega final.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand" href="index.html"><span class="brand-mark">HL</span><span>Haru Logistics Group</span></a><p>Contacto comercial y cotizaciones para operaciones logísticas.</p></div>
+      <div><h3>Responder rápido</h3><p>Origen<br>Destino<br>Peso<br>Tipo de carga</p></div>
+      <div><h3>Enlaces</h3><p><a href="servicios.html">Servicios</a><br><a href="seguimiento.html">Seguimiento</a></p></div>
+    </div>
+    <div class="container"><small>© 2026 Haru Logistics Group.</small></div>
+  </footer>
+  <a class="whatsapp" href="https://wa.me/50499803341" aria-label="Contactar por WhatsApp">WA</a>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
