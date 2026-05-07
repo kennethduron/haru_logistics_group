@@ -8,6 +8,7 @@
   --brand-2: #0b7fab;
   --accent: #f3b23f;
   --green: #16876a;
+  --header-height: 76px;
   --shadow: 0 18px 55px rgba(19, 32, 47, 0.12);
 }
 
@@ -23,12 +24,17 @@ html {
 
 body {
   margin: 0;
+  padding-top: var(--header-height);
   font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--ink);
   background: var(--paper);
   line-height: 1.6;
   overflow-x: hidden;
   max-width: 100%;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--header-height) + 18px);
 }
 
 img {
@@ -46,20 +52,24 @@ a {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 20;
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid rgba(223, 231, 239, 0.9);
-  backdrop-filter: blur(14px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(223, 231, 239, 0.76);
+  box-shadow: 0 14px 38px rgba(19, 32, 47, 0.08);
+  backdrop-filter: blur(18px);
 }
 
 .nav {
-  min-height: 76px;
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 18px;
   position: relative;
 }
 
@@ -102,21 +112,44 @@ a {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .nav-link {
   color: var(--muted);
   text-decoration: none;
   font-weight: 700;
-  padding: 10px 12px;
+  padding: 9px 12px;
   border-radius: 8px;
+  transition: color 160ms ease, background 160ms ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--brand);
   background: #eef6fb;
+}
+
+.language-toggle {
+  width: 52px;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid #cfe0ee;
+  border-radius: 8px;
+  color: #073f70;
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  box-shadow: 0 8px 18px rgba(8, 75, 131, 0.08);
+  font: inherit;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.language-toggle:hover {
+  border-color: #9ec0dc;
+  box-shadow: 0 10px 22px rgba(8, 75, 131, 0.13);
+  transform: translateY(-1px);
 }
 
 .btn {
@@ -783,35 +816,40 @@ textarea {
     place-items: center;
     flex: 0 0 44px;
     margin-left: auto;
-    position: fixed !important;
-    right: auto !important;
-    left: clamp(260px, calc(100vw - 58px), 330px) !important;
-    top: 16px !important;
-    z-index: 60 !important;
+    position: relative !important;
+    z-index: 120 !important;
     color: var(--ink) !important;
     background: #fff !important;
     border: 1px solid var(--line) !important;
+    box-shadow: 0 8px 18px rgba(19, 32, 47, 0.08);
   }
 
   .nav .brand {
-    padding-right: 58px;
+    padding-right: 0;
   }
 
   .nav-menu {
     position: absolute;
-    top: 76px;
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
     display: none;
     flex-direction: column;
     align-items: stretch;
     background: #fff;
-    border-bottom: 1px solid var(--line);
-    padding: 14px 20px 20px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(19, 32, 47, 0.14);
+    padding: 12px;
   }
 
   .nav-menu.open {
     display: flex;
+  }
+
+  .language-toggle {
+    width: 100%;
+    min-height: 44px;
   }
 
   .hero-grid,

@@ -1,0 +1,218 @@
+[debug] [2026-05-07T04:01:06.281Z] ----------------------------------------------------------------------
+[debug] [2026-05-07T04:01:06.285Z] Command:       C:\nvm4w\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-05-07T04:01:06.286Z] CLI Version:   15.8.0
+[debug] [2026-05-07T04:01:06.286Z] Platform:      win32
+[debug] [2026-05-07T04:01:06.286Z] Node Version:  v22.22.2
+[debug] [2026-05-07T04:01:06.287Z] Time:          Wed May 06 2026 22:01:06 GMT-0600 (Central Standard Time)
+[debug] [2026-05-07T04:01:06.287Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-05-07T04:01:09.116Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-07T04:01:09.118Z] > authorizing via signed-in user (kennethduron.paz@gmail.com)
+[debug] [2026-05-07T04:01:09.119Z] [iam] checking project kennethlogisticsgroup for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-05-07T04:01:09.122Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:09.122Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:09.125Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions [none]
+[debug] [2026-05-07T04:01:09.125Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions  x-goog-user-project=kennethlogisticsgroup
+[debug] [2026-05-07T04:01:09.126Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-05-07T04:01:09.565Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions 200
+[debug] [2026-05-07T04:01:09.566Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-05-07T04:01:09.568Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:09.569Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:09.570Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kennethlogisticsgroup [none]
+[debug] [2026-05-07T04:01:10.019Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kennethlogisticsgroup 200
+[debug] [2026-05-07T04:01:10.019Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kennethlogisticsgroup {"projectId":"kennethlogisticsgroup","projectNumber":"994238477835","displayName":"kennethlogisticsgroup","name":"projects/kennethlogisticsgroup","resources":{"hostingSite":"kennethlogisticsgroup"},"state":"ACTIVE","etag":"1_4456baed-98b7-47cb-8386-b40f79374054"}
+[info] 
+[info] === Deploying to 'kennethlogisticsgroup'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-05-07T04:01:10.033Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:10.034Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:10.034Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions [none]
+[debug] [2026-05-07T04:01:10.035Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-05-07T04:01:11.266Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions 200
+[debug] [2026-05-07T04:01:11.266Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions {"name":"projects/994238477835/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[kennethlogisticsgroup]: beginning deploy... 
+[info] i  hosting[kennethlogisticsgroup]: found 17 files in . 
+[debug] [2026-05-07T04:01:11.342Z] [hosting] uploading with 200 concurrency
+[debug] [2026-05-07T04:01:11.345Z] [hosting] hash cache [] not populated
+[debug] [2026-05-07T04:01:11.522Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:11.522Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:11.528Z] [hosting] hash cache [] stored for 17 files
+[debug] [2026-05-07T04:01:11.528Z] [hosting][hash queue][FINAL] {"max":166,"min":20,"avg":41.11764705882353,"active":0,"complete":17,"success":17,"errored":0,"retried":0,"total":17,"elapsed":182}
+[debug] [2026-05-07T04:01:11.530Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d:populateFiles [none]
+[debug] [2026-05-07T04:01:11.531Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d:populateFiles {"files":{"/servicios.html":"102565eb6a13e783b5d9fa8376eae7b1c94b8d478627a3691237f616296963f0","/rutas.html":"04a388db3f449d2626cc549b0051f79db1b650eb5917373ed29a5fd3ece8a082","/seguimiento.html":"ba6546a4dd61b6a608398b070f06aa13854c9c6e78ffcbdca21ceb91acce6ff3","/nosotros.html":"fc2b65c6ed4efe581c0c16da0399034bd2b413ca0de7bc6b67b74b0d2e03becc","/index.html":"3e73af93abd50408bb71c4f1a93e746c1ca61de0b4919260f3db2d2f4fb4cf47","/contacto.html":"32f58c5bca4f0c0abc6157a35134f1a0acaf92a3c4c1ededb58b89b763cfda3d","/crm.html":"87407b38575bad668dff413e72dedc9fedba4705ddbd990ffa21ab9f9345f358","/assets/css/styles.css":"79faaf22b2240c4f62dfa26686ed5484ce4e6db9102750f84d14902530653d44","/images/flag_usa.jpg":"966c7b6945410fff3ad010fe9c95f76cbadb8f20e9817a0e5599b8386a0ba978","/assets/js/main.js":"50bba6e710e71a323fccd3f0c004e6ac17a01cf58b55e23e4adc107ebdb66aeb","/images/image1.jpg":"6a4bbb8d51394e5b8b1793e7311bb87d18f83d9fd564e9c4201590aa81e56f82","/images/spain_flag.png":"c0c06badc4811155f8da5acf83c0484bf39bb39dfdbeb536d1183bb1bb1c73a6","/images/image5.webp":"36a55a19f9bf728caa9ed9c729085cc6903566854f198e5ef911a2b5d0b989e5","/images/image3.jpg":"ad5cc1214a56ee154dbfcff5c422057fa8c6642db0ffb69e5ec7f8e355743f1b","/images/image2.jpg":"70237e7360a4ce246baed5dfed4cd01f07288a530f9e08c0f485ec358c89ec65","/images/image4.png":"3b8c9e2237133a82bde15333829e871a4aabc287401ecdf89b1101586d1c9013","/images/image6.png":"4fbcb92f41e5013849f51be77753cd38930311b67906376b1fa483c7febaaa9f"}}
+[debug] [2026-05-07T04:01:12.383Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d:populateFiles 200
+[debug] [2026-05-07T04:01:12.384Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d:populateFiles {"uploadRequiredHashes":["79faaf22b2240c4f62dfa26686ed5484ce4e6db9102750f84d14902530653d44","50bba6e710e71a323fccd3f0c004e6ac17a01cf58b55e23e4adc107ebdb66aeb"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files"}
+[debug] [2026-05-07T04:01:12.386Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:12.387Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:12.388Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:12.389Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:12.390Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/79faaf22b2240c4f62dfa26686ed5484ce4e6db9102750f84d14902530653d44 [none]
+[debug] [2026-05-07T04:01:12.390Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/79faaf22b2240c4f62dfa26686ed5484ce4e6db9102750f84d14902530653d44 [stream]
+[debug] [2026-05-07T04:01:12.396Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/50bba6e710e71a323fccd3f0c004e6ac17a01cf58b55e23e4adc107ebdb66aeb [none]
+[debug] [2026-05-07T04:01:12.396Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/50bba6e710e71a323fccd3f0c004e6ac17a01cf58b55e23e4adc107ebdb66aeb [stream]
+[debug] [2026-05-07T04:01:12.401Z] [hosting][populate queue][FINAL] {"max":868,"min":868,"avg":868,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":880}
+[debug] [2026-05-07T04:01:12.402Z] [hosting] uploads queued: 2
+[info] i  hosting: uploading new files [0/2] (0%) 
+[debug] [2026-05-07T04:01:13.391Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/79faaf22b2240c4f62dfa26686ed5484ce4e6db9102750f84d14902530653d44 200
+[debug] [2026-05-07T04:01:13.392Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/79faaf22b2240c4f62dfa26686ed5484ce4e6db9102750f84d14902530653d44 [stream]
+[debug] [2026-05-07T04:01:13.559Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/50bba6e710e71a323fccd3f0c004e6ac17a01cf58b55e23e4adc107ebdb66aeb 200
+[debug] [2026-05-07T04:01:13.559Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d/files/50bba6e710e71a323fccd3f0c004e6ac17a01cf58b55e23e4adc107ebdb66aeb [stream]
+[debug] [2026-05-07T04:01:13.559Z] [hosting][upload queue][FINAL] {"max":1172,"min":1007,"avg":1089.5,"active":0,"complete":2,"success":2,"errored":0,"retried":0,"total":2,"elapsed":1174}
+[info] i  hosting: upload complete 
+[info] +  hosting[kennethlogisticsgroup]: file upload complete 
+[debug] [2026-05-07T04:01:13.561Z] [hosting] deploy completed after 2284ms
+[debug] [2026-05-07T04:01:13.562Z] [
+  {
+    "config": {
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        ".firebaserc",
+        ".firebase/**",
+        ".git/**",
+        "firebase-debug.log",
+        "firestore.rules",
+        "node_modules/**",
+        "haru_logistics_group.txt",
+        "haru_logistics_group1.txt"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(html|css|js)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ],
+      "site": "kennethlogisticsgroup"
+    },
+    "version": "projects/994238477835/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d"
+  }
+]
+[info] i  hosting[kennethlogisticsgroup]: finalizing version... 
+[debug] [2026-05-07T04:01:13.567Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:13.567Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:13.569Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d updateMask=status%2Cconfig
+[debug] [2026-05-07T04:01:13.569Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d {"status":"FINALIZED","config":{"headers":[{"glob":"**/*.@(html|css|js)","headers":{"Cache-Control":"no-cache"}}]}}
+[debug] [2026-05-07T04:01:14.198Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d 200
+[debug] [2026-05-07T04:01:14.199Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d {"name":"projects/994238477835/sites/kennethlogisticsgroup/versions/0402d31a71d0c31d","status":"FINALIZED","config":{"headers":[{"headers":{"Cache-Control":"no-cache"},"glob":"**/*.@(html|css|js)"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-05-07T04:01:10.690251Z","createUser":{"email":"kennethduron.paz@gmail.com"},"finalizeTime":"2026-05-07T04:01:14.061593Z","finalizeUser":{"email":"kennethduron.paz@gmail.com"}}
+[debug] [2026-05-07T04:01:14.199Z] [hosting] finalized version for kennethlogisticsgroup:[object Object]
+[info] +  hosting[kennethlogisticsgroup]: version finalized 
+[info] i  hosting[kennethlogisticsgroup]: releasing new version... 
+[debug] [2026-05-07T04:01:14.201Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:14.201Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:01:14.202Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/channels/live/releases versionName=projects%2F994238477835%2Fsites%2Fkennethlogisticsgroup%2Fversions%2F0402d31a71d0c31d
+[debug] [2026-05-07T04:01:14.202Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/channels/live/releases {}
+[debug] [2026-05-07T04:01:14.857Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/channels/live/releases 200
+[debug] [2026-05-07T04:05:10.548Z] ----------------------------------------------------------------------
+[debug] [2026-05-07T04:05:10.555Z] Command:       C:\nvm4w\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-05-07T04:05:10.556Z] CLI Version:   15.8.0
+[debug] [2026-05-07T04:05:10.556Z] Platform:      win32
+[debug] [2026-05-07T04:05:10.557Z] Node Version:  v22.22.2
+[debug] [2026-05-07T04:05:10.557Z] Time:          Wed May 06 2026 22:05:10 GMT-0600 (Central Standard Time)
+[debug] [2026-05-07T04:05:10.558Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-05-07T04:05:13.322Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-07T04:05:13.324Z] > authorizing via signed-in user (kennethduron.paz@gmail.com)
+[debug] [2026-05-07T04:05:13.324Z] [iam] checking project kennethlogisticsgroup for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-05-07T04:05:13.327Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:13.328Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:13.330Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions [none]
+[debug] [2026-05-07T04:05:13.330Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions  x-goog-user-project=kennethlogisticsgroup
+[debug] [2026-05-07T04:05:13.331Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-05-07T04:05:13.684Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions 200
+[debug] [2026-05-07T04:05:13.685Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kennethlogisticsgroup:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-05-07T04:05:13.688Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:13.688Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:13.689Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kennethlogisticsgroup [none]
+[debug] [2026-05-07T04:05:14.173Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kennethlogisticsgroup 200
+[debug] [2026-05-07T04:05:14.174Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kennethlogisticsgroup {"projectId":"kennethlogisticsgroup","projectNumber":"994238477835","displayName":"kennethlogisticsgroup","name":"projects/kennethlogisticsgroup","resources":{"hostingSite":"kennethlogisticsgroup"},"state":"ACTIVE","etag":"1_4456baed-98b7-47cb-8386-b40f79374054"}
+[info] 
+[info] === Deploying to 'kennethlogisticsgroup'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-05-07T04:05:14.187Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:14.187Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:14.188Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions [none]
+[debug] [2026-05-07T04:05:14.188Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-05-07T04:05:15.324Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions 200
+[debug] [2026-05-07T04:05:15.325Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions {"name":"projects/994238477835/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[kennethlogisticsgroup]: beginning deploy... 
+[info] i  hosting[kennethlogisticsgroup]: found 17 files in . 
+[debug] [2026-05-07T04:05:15.396Z] [hosting] uploading with 200 concurrency
+[debug] [2026-05-07T04:05:15.425Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:15.425Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:15.429Z] [hosting] hash cache [] stored for 17 files
+[debug] [2026-05-07T04:05:15.430Z] [hosting][hash queue][FINAL] {"max":19,"min":5,"avg":6.176470588235294,"active":0,"complete":17,"success":17,"errored":0,"retried":0,"total":17,"elapsed":30}
+[debug] [2026-05-07T04:05:15.431Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc:populateFiles [none]
+[debug] [2026-05-07T04:05:15.431Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc:populateFiles {"files":{"/servicios.html":"102565eb6a13e783b5d9fa8376eae7b1c94b8d478627a3691237f616296963f0","/seguimiento.html":"ba6546a4dd61b6a608398b070f06aa13854c9c6e78ffcbdca21ceb91acce6ff3","/rutas.html":"04a388db3f449d2626cc549b0051f79db1b650eb5917373ed29a5fd3ece8a082","/nosotros.html":"fc2b65c6ed4efe581c0c16da0399034bd2b413ca0de7bc6b67b74b0d2e03becc","/index.html":"3e73af93abd50408bb71c4f1a93e746c1ca61de0b4919260f3db2d2f4fb4cf47","/crm.html":"87407b38575bad668dff413e72dedc9fedba4705ddbd990ffa21ab9f9345f358","/contacto.html":"32f58c5bca4f0c0abc6157a35134f1a0acaf92a3c4c1ededb58b89b763cfda3d","/images/spain_flag.png":"c0c06badc4811155f8da5acf83c0484bf39bb39dfdbeb536d1183bb1bb1c73a6","/images/image6.png":"4fbcb92f41e5013849f51be77753cd38930311b67906376b1fa483c7febaaa9f","/images/image5.webp":"36a55a19f9bf728caa9ed9c729085cc6903566854f198e5ef911a2b5d0b989e5","/images/image4.png":"3b8c9e2237133a82bde15333829e871a4aabc287401ecdf89b1101586d1c9013","/images/image3.jpg":"ad5cc1214a56ee154dbfcff5c422057fa8c6642db0ffb69e5ec7f8e355743f1b","/images/image2.jpg":"70237e7360a4ce246baed5dfed4cd01f07288a530f9e08c0f485ec358c89ec65","/images/image1.jpg":"6a4bbb8d51394e5b8b1793e7311bb87d18f83d9fd564e9c4201590aa81e56f82","/images/flag_usa.jpg":"966c7b6945410fff3ad010fe9c95f76cbadb8f20e9817a0e5599b8386a0ba978","/assets/css/styles.css":"96558593cdd1c49d270d48c790c3894de31dc58f49307d9814dd2f75c7de7e24","/assets/js/main.js":"3a65918c00f7749e81ec0d14e43452ab75f498f2a3dc9d901c32b4f90784543e"}}
+[debug] [2026-05-07T04:05:15.942Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc:populateFiles 200
+[debug] [2026-05-07T04:05:15.943Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/994238477835/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc:populateFiles {"uploadRequiredHashes":["96558593cdd1c49d270d48c790c3894de31dc58f49307d9814dd2f75c7de7e24","3a65918c00f7749e81ec0d14e43452ab75f498f2a3dc9d901c32b4f90784543e"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files"}
+[debug] [2026-05-07T04:05:15.945Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:15.945Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:15.946Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:15.947Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:15.948Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/96558593cdd1c49d270d48c790c3894de31dc58f49307d9814dd2f75c7de7e24 [none]
+[debug] [2026-05-07T04:05:15.948Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/96558593cdd1c49d270d48c790c3894de31dc58f49307d9814dd2f75c7de7e24 [stream]
+[debug] [2026-05-07T04:05:15.953Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/3a65918c00f7749e81ec0d14e43452ab75f498f2a3dc9d901c32b4f90784543e [none]
+[debug] [2026-05-07T04:05:15.954Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/3a65918c00f7749e81ec0d14e43452ab75f498f2a3dc9d901c32b4f90784543e [stream]
+[debug] [2026-05-07T04:05:15.959Z] [hosting][populate queue][FINAL] {"max":522,"min":522,"avg":522,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":534}
+[debug] [2026-05-07T04:05:15.960Z] [hosting] uploads queued: 2
+[debug] [2026-05-07T04:05:16.772Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/3a65918c00f7749e81ec0d14e43452ab75f498f2a3dc9d901c32b4f90784543e 200
+[debug] [2026-05-07T04:05:16.772Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/3a65918c00f7749e81ec0d14e43452ab75f498f2a3dc9d901c32b4f90784543e [stream]
+[debug] [2026-05-07T04:05:17.163Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/96558593cdd1c49d270d48c790c3894de31dc58f49307d9814dd2f75c7de7e24 200
+[debug] [2026-05-07T04:05:17.164Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc/files/96558593cdd1c49d270d48c790c3894de31dc58f49307d9814dd2f75c7de7e24 [stream]
+[debug] [2026-05-07T04:05:17.164Z] [hosting][upload queue][FINAL] {"max":1221,"min":826,"avg":1023.5,"active":0,"complete":2,"success":2,"errored":0,"retried":0,"total":2,"elapsed":1221}
+[info] i  hosting: upload complete 
+[info] +  hosting[kennethlogisticsgroup]: file upload complete 
+[debug] [2026-05-07T04:05:17.166Z] [hosting] deploy completed after 1831ms
+[debug] [2026-05-07T04:05:17.167Z] [
+  {
+    "config": {
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        ".firebaserc",
+        ".firebase/**",
+        ".git/**",
+        "firebase-debug.log",
+        "firestore.rules",
+        "node_modules/**",
+        "haru_logistics_group.txt",
+        "haru_logistics_group1.txt"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(html|css|js)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ],
+      "site": "kennethlogisticsgroup"
+    },
+    "version": "projects/994238477835/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc"
+  }
+]
+[info] i  hosting[kennethlogisticsgroup]: finalizing version... 
+[debug] [2026-05-07T04:05:17.173Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:17.174Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:17.175Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc updateMask=status%2Cconfig
+[debug] [2026-05-07T04:05:17.175Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc {"status":"FINALIZED","config":{"headers":[{"glob":"**/*.@(html|css|js)","headers":{"Cache-Control":"no-cache"}}]}}
+[debug] [2026-05-07T04:05:17.722Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc 200
+[debug] [2026-05-07T04:05:17.722Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc {"name":"projects/994238477835/sites/kennethlogisticsgroup/versions/22b7c77ae459bfbc","status":"FINALIZED","config":{"headers":[{"headers":{"Cache-Control":"no-cache"},"glob":"**/*.@(html|css|js)"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-05-07T04:05:14.762326Z","createUser":{"email":"kennethduron.paz@gmail.com"},"finalizeTime":"2026-05-07T04:05:17.597530Z","finalizeUser":{"email":"kennethduron.paz@gmail.com"}}
+[debug] [2026-05-07T04:05:17.723Z] [hosting] finalized version for kennethlogisticsgroup:[object Object]
+[info] +  hosting[kennethlogisticsgroup]: version finalized 
+[info] i  hosting[kennethlogisticsgroup]: releasing new version... 
+[debug] [2026-05-07T04:05:17.725Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:17.725Z] Checked if tokens are valid: true, expires at: 1778128470288
+[debug] [2026-05-07T04:05:17.726Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/channels/live/releases versionName=projects%2F994238477835%2Fsites%2Fkennethlogisticsgroup%2Fversions%2F22b7c77ae459bfbc
+[debug] [2026-05-07T04:05:17.726Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/channels/live/releases {}
+[debug] [2026-05-07T04:05:18.370Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kennethlogisticsgroup/channels/live/releases 200
