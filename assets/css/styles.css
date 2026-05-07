@@ -17,6 +17,8 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -26,6 +28,7 @@ body {
   background: var(--paper);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 img {
@@ -57,6 +60,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  position: relative;
 }
 
 .brand {
@@ -149,6 +153,7 @@ a {
 .hero {
   position: relative;
   min-height: calc(100vh - 76px);
+  min-height: calc(100svh - 76px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -162,7 +167,7 @@ a {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(9, 27, 48, 0.86), rgba(9, 27, 48, 0.58), rgba(9, 27, 48, 0.18)),
-    var(--hero-image) center / cover no-repeat;
+    var(--hero-image) var(--hero-position, center center) / cover no-repeat;
   z-index: -2;
 }
 
@@ -379,19 +384,43 @@ a {
 }
 
 .page-hero {
-  padding: 84px 0 74px;
+  position: relative;
+  min-height: calc(100vh - 76px);
+  min-height: calc(100svh - 76px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: clamp(56px, 8vh, 92px) 0;
   color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
     linear-gradient(90deg, rgba(9, 27, 48, 0.88), rgba(9, 27, 48, 0.58)),
-    var(--hero-image) center / cover no-repeat;
+    var(--hero-image) var(--hero-position, center center) / cover no-repeat;
+  z-index: -1;
 }
 
-.page-hero-compact {
-  padding: 58px 0 52px;
+.page-hero .container {
+  position: relative;
+  z-index: 1;
 }
 
-.page-hero-compact h1 {
-  font-size: clamp(2.35rem, 5vw, 4.8rem);
+.hero > .container,
+.page-hero > .container {
+  width: min(1120px, calc(100vw - 40px));
+  max-width: calc(100vw - 40px);
+}
+
+.hero h1,
+.page-hero h1 {
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 .page-hero p {
@@ -484,6 +513,7 @@ input,
 select,
 textarea {
   width: 100%;
+  min-width: 0;
   min-height: 48px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -561,6 +591,47 @@ textarea {
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 22px;
+}
+
+.auth-card {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 32px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.auth-card form,
+.auth-card > div {
+  min-width: 0;
+}
+
+.auth-card h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.auth-card p {
+  color: var(--muted);
+}
+
+.crm-session {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
 }
 
 .crm-toolbar label {
@@ -687,8 +758,43 @@ textarea {
 }
 
 @media (max-width: 900px) {
+  .site-header {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .site-header .nav.container {
+    width: calc(100vw - 28px);
+    max-width: calc(100vw - 28px);
+    gap: 12px;
+  }
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .brand span:last-child {
+    max-width: 130px;
+  }
+
   .nav-toggle {
-    display: block;
+    display: grid !important;
+    place-items: center;
+    flex: 0 0 44px;
+    margin-left: auto;
+    position: fixed !important;
+    right: auto !important;
+    left: clamp(260px, calc(100vw - 58px), 330px) !important;
+    top: 16px !important;
+    z-index: 60 !important;
+    color: var(--ink) !important;
+    background: #fff !important;
+    border: 1px solid var(--line) !important;
+  }
+
+  .nav .brand {
+    padding-right: 58px;
   }
 
   .nav-menu {
@@ -711,12 +817,38 @@ textarea {
   .hero-grid,
   .split,
   .grid-2,
+  .auth-card,
   .footer-grid {
     grid-template-columns: 1fr;
   }
 
+  .auth-card {
+    padding: 26px;
+  }
+
+  .page-hero h1,
+  .page-hero p,
+  .hero h1,
+  .hero p {
+    max-width: calc(100vw - 28px);
+  }
+
+  .hero > .container,
+  .page-hero > .container {
+    width: calc(100vw - 28px);
+    max-width: calc(100vw - 28px);
+  }
+
   .hero {
-    min-height: auto;
+    min-height: calc(100vh - 76px);
+    min-height: calc(100svh - 76px);
+  }
+
+  .hero,
+  .page-hero {
+    --hero-position: center center;
+    align-items: flex-start;
+    padding-top: clamp(84px, 20vh, 150px);
   }
 
   .hero-panel {
@@ -731,8 +863,13 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  body > * {
+    max-width: 100vw;
+  }
+
   .container {
-    width: min(100% - 28px, 1120px);
+    width: calc(100vw - 28px);
+    max-width: calc(100vw - 28px);
   }
 
   .hero-grid {
@@ -741,8 +878,20 @@ textarea {
 
   .hero h1,
   .page-hero h1 {
-    font-size: 2.25rem;
-    line-height: 1.08;
+    font-size: 1.38rem;
+    line-height: 1.12;
+  }
+
+  .page-hero p {
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .page-hero h1,
+  .page-hero p,
+  .hero h1,
+  .hero p {
+    max-width: min(330px, calc(100vw - 36px));
   }
 
   .section {
@@ -765,7 +914,8 @@ textarea {
   }
 
   .hero-actions .btn {
-    flex: 1 1 170px;
+    width: 100%;
+    flex: 1 1 100%;
   }
 
   .status-row {

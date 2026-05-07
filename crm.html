@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CRM Interno | Haru Logistics Group</title>
   <meta name="description" content="CRM interno de demostracion para reps y dueño de Haru Logistics Group.">
+  <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -13,20 +14,14 @@
       <a class="brand" href="index.html"><span class="brand-mark">HL</span><span>Haru Logistics Group</span></a>
       <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
       <div class="nav-menu">
-        <a class="nav-link" href="index.html">Inicio</a>
-        <a class="nav-link" href="servicios.html">Servicios</a>
-        <a class="nav-link" href="rutas.html">Rutas</a>
-        <a class="nav-link" href="seguimiento.html">Seguimiento</a>
-        <a class="nav-link" href="nosotros.html">Nosotros</a>
-        <a class="nav-link" href="contacto.html">Contacto</a>
-        <a class="nav-link active" href="crm.html">CRM</a>
-        <a class="btn btn-primary" href="contacto.html#cotizar">Cotizar</a>
+        <a class="nav-link active" href="crm.html">CRM interno</a>
+        <a class="btn btn-secondary" href="index.html">Volver al sitio</a>
       </div>
     </nav>
   </header>
 
   <main data-crm>
-    <section class="page-hero page-hero-compact" style="--hero-image: url('../../images/image5.webp')">
+    <section class="page-hero" style="--hero-image: url('../../images/image2.jpg'); --hero-position: center center">
       <div class="container">
         <p class="eyebrow">CRM interno</p>
         <h1>Control comercial, operativo y ejecutivo en un solo panel.</h1>
@@ -36,6 +31,30 @@
 
     <section class="section section-soft">
       <div class="container">
+        <div class="auth-card" data-auth-login>
+          <div>
+            <p class="eyebrow">Acceso privado</p>
+            <h2>Entrar al CRM</h2>
+            <p>Solo reps y dueño deben entrar aquí. Para la prueba puedes crear un usuario con tu correo y una contraseña de 6+ caracteres.</p>
+          </div>
+          <form class="form" data-login-form>
+            <label>Email
+              <input type="email" name="email" placeholder="kenneth@email.com" required>
+            </label>
+            <label>Contraseña
+              <input type="password" name="password" placeholder="Mínimo 6 caracteres" required>
+            </label>
+            <button class="btn btn-primary" type="submit">Entrar al CRM</button>
+            <div class="notice"></div>
+          </form>
+        </div>
+
+        <div data-auth-app hidden>
+        <div class="crm-session">
+          <strong>Sesión activa:</strong> <span data-auth-email></span>
+          <button class="btn btn-secondary" type="button" data-logout>Cerrar sesión</button>
+        </div>
+
         <div class="crm-toolbar">
           <label>Vista
             <select data-role>
@@ -239,6 +258,7 @@
             </table>
           </div>
         </section>
+        </div>
       </div>
     </section>
   </main>
@@ -251,6 +271,9 @@
     </div>
     <div class="container"><small>© 2026 Haru Logistics Group.</small></div>
   </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

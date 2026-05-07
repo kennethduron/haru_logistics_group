@@ -1,5 +1,17 @@
 const CRM_STORAGE = "haru_crm_shipments";
 const LEAD_STORAGE = "haru_crm_leads";
+const firebaseConfig = {
+  apiKey: "AIzaSyB7y6EYPf4pXVVOyGdJlurfOx02uRwThyk",
+  authDomain: "kennethlogisticsgroup.firebaseapp.com",
+  projectId: "kennethlogisticsgroup",
+  storageBucket: "kennethlogisticsgroup.firebasestorage.app",
+  messagingSenderId: "994238477835",
+  appId: "1:994238477835:web:3be9e83a9213bb5a17390e",
+};
+
+let firebaseApp = null;
+let firebaseAuth = null;
+let firestoreDb = null;
 
 const reps = ["Andrea Mejia", "Carlos Rivera", "Daniel Santos"];
 
@@ -19,9 +31,9 @@ const seedShipments = [
   {
     id: "s1",
     tracking: "HLG-2026-1840",
-    customer: "AgroSula Export",
-    contact: "Carlos Gomez",
-    email: "carlos@agrosula.com",
+    customer: "Kenneth Logistics Test",
+    contact: "Kenneth",
+    email: "kenneth@example.com",
     phone: "+504 9980-3341",
     rep: "Andrea Mejia",
     service: "Maritimo",
@@ -30,7 +42,7 @@ const seedShipments = [
     status: "transit",
     eta: "2026-05-12",
     value: 1850,
-    notes: "Contenedor consolidado con documentacion validada.",
+    notes: "Envio de prueba para Kenneth con documentacion validada.",
     updatedAt: "2026-05-06 09:30",
   },
   {
@@ -135,6 +147,54 @@ function setLeads(leads) {
   writeStore(LEAD_STORAGE, leads);
 }
 
+function initFirebase() {
+  if (!window.firebase || firebaseApp) return Boolean(firebaseApp);
+
+  firebaseApp = window.firebase.initializeApp(firebaseConfig);
+  firebaseAuth = window.firebase.auth ? window.firebase.auth() : null;
+  firestoreDb = window.firebase.firestore ? window.firebase.firestore() : null;
+  return true;
+}
+
+async function fetchShipmentsFromFirestore() {
+  if (!firestoreDb) return null;
+  const snap = await firestoreDb.collection("shipments").orderBy("updatedAt", "desc").get();
+  return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+}
+
+async function fetchLeadsFromFirestore() {
+  if (!firestoreDb) return null;
+  const snap = await firestoreDb.collection("leads").orderBy("createdAt", "desc").get();
+  return snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+}
+
+async function saveShipmentToFirestore(shipment) {
+  if (!firestoreDb) return;
+  await firestoreDb.collection("shipments").doc(shipment.id).set(shipment, { merge: true });
+}
+
+async function saveLeadToFirestore(lead) {
+  if (!firestoreDb || !firebaseAuth || !firebaseAuth.currentUser) return;
+  await firestoreDb.collection("leads").doc(lead.id).set(lead, { merge: true });
+}
+
+async function findShipmentByTracking(code) {
+  initFirebase();
+  if (firestoreDb) {
+    try {
+      const snap = await firestoreDb.collection("shipments").where("tracking", "==", code).limit(1).get();
+      if (!snap.empty) {
+        const doc = snap.docs[0];
+        return { id: doc.id, ...doc.data() };
+      }
+    } catch (error) {
+      console.warn("Firestore tracking lookup failed, using local demo data.", error);
+    }
+  }
+
+  return getShipments().find((item) => item.tracking.toUpperCase() === code);
+}
+
 function todayStamp() {
   return new Date().toLocaleString("es-HN", {
     year: "numeric",
@@ -187,7 +247,7 @@ document.querySelectorAll("[data-demo-form]").forEach((form) => {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
     const leads = getLeads();
-    leads.unshift({
+    const lead = {
       id: newId("lead"),
       name: data.nombre || data.name || "Cliente web",
       company: data.empresa || "Sin empresa",
@@ -200,7 +260,8 @@ document.querySelectorAll("[data-demo-form]").forEach((form) => {
       status: "lead",
       notes: data.detalles || "",
       createdAt: new Date().toISOString().slice(0, 10),
-    });
+    };
+    leads.unshift(lead);
     setLeads(leads);
 
     const notice = form.querySelector(".notice") || document.querySelector(`#${form.dataset.notice}`);
@@ -216,6 +277,7 @@ const trackingForm = document.querySelector("[data-tracking-form]");
 const trackingResult = document.querySelector("[data-tracking-result]");
 
 if (trackingForm && trackingResult) {
+  initFirebase();
   const params = new URLSearchParams(window.location.search);
   const trackParam = params.get("track");
   if (trackParam) {
@@ -231,8 +293,10 @@ if (trackingForm && trackingResult) {
   });
 }
 
-function renderPublicTracking(code) {
-  const shipment = getShipments().find((item) => item.tracking.toUpperCase() === code);
+async function renderPublicTracking(code) {
+  trackingResult.innerHTML = "<strong>Consultando estado...</strong>";
+  trackingResult.classList.add("show");
+  const shipment = await findShipmentByTracking(code);
 
   if (!shipment) {
     trackingResult.innerHTML = `
@@ -280,10 +344,102 @@ function trackingMessage(status, shipment) {
 const crmRoot = document.querySelector("[data-crm]");
 
 if (crmRoot) {
-  initCrm();
+  initCrmAuth();
 }
 
+function initCrmAuth() {
+  initFirebase();
+  const loginPanel = document.querySelector("[data-auth-login]");
+  const appPanel = document.querySelector("[data-auth-app]");
+  const loginForm = document.querySelector("[data-login-form]");
+  const logoutButton = document.querySelector("[data-logout]");
+  const authEmail = document.querySelector("[data-auth-email]");
+
+  if (!firebaseAuth) {
+    loginPanel.innerHTML = "<h2>Firebase Auth no cargo.</h2><p>Revisa la conexion a internet o los scripts de Firebase.</p>";
+    return;
+  }
+
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = loginForm.email.value.trim();
+    const password = loginForm.password.value;
+    const message = loginForm.querySelector(".notice");
+    message.classList.add("show");
+    message.textContent = "Validando acceso...";
+
+    try {
+      await firebaseAuth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      if (error.code === "auth/user-not-found" || error.code === "auth/invalid-credential") {
+        try {
+          await firebaseAuth.createUserWithEmailAndPassword(email, password);
+        } catch (createError) {
+          message.textContent = loginErrorMessage(createError);
+        }
+      } else {
+        message.textContent = loginErrorMessage(error);
+      }
+    }
+  });
+
+  logoutButton.addEventListener("click", () => firebaseAuth.signOut());
+
+  firebaseAuth.onAuthStateChanged(async (user) => {
+    const loggedIn = Boolean(user);
+    loginPanel.hidden = loggedIn;
+    appPanel.hidden = !loggedIn;
+    authEmail.textContent = user ? user.email : "";
+
+    if (loggedIn) {
+      await hydrateCrmFromFirestore();
+      initCrm();
+    }
+  });
+}
+
+function loginErrorMessage(error) {
+  if (error.code === "auth/operation-not-allowed") {
+    return "Activa Email/Password en Firebase Authentication para poder iniciar sesion.";
+  }
+
+  if (error.code === "auth/weak-password") {
+    return "La contrasena debe tener al menos 6 caracteres.";
+  }
+
+  return `No se pudo iniciar sesion: ${error.message}`;
+}
+
+async function hydrateCrmFromFirestore() {
+  initFirebase();
+  if (!firestoreDb) return;
+
+  try {
+    let [shipments, leads] = await Promise.all([fetchShipmentsFromFirestore(), fetchLeadsFromFirestore()]);
+    if (!shipments || shipments.length === 0) {
+      await Promise.all(seedShipments.map((shipment) => saveShipmentToFirestore(shipment)));
+      shipments = seedShipments;
+    }
+    if (!leads || leads.length === 0) {
+      await Promise.all(seedLeads.map((lead) => saveLeadToFirestore(lead)));
+      leads = seedLeads;
+    }
+    setShipments(shipments);
+    setLeads(leads);
+  } catch (error) {
+    console.warn("Firestore CRM load failed, using local demo data.", error);
+  }
+}
+
+let crmInitialized = false;
+
 function initCrm() {
+  if (crmInitialized) {
+    renderCrm();
+    return;
+  }
+  crmInitialized = true;
+
   const roleSelect = document.querySelector("[data-role]");
   const repSelect = document.querySelector("[data-rep-filter]");
   const shipmentForm = document.querySelector("[data-shipment-form]");
@@ -303,7 +459,7 @@ function initCrm() {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(shipmentForm).entries());
     const shipments = getShipments();
-    shipments.unshift({
+    const shipment = {
       id: newId("shipment"),
       tracking: (data.tracking || generateTracking()).toUpperCase(),
       customer: data.customer,
@@ -319,8 +475,10 @@ function initCrm() {
       value: Number(data.value || 0),
       notes: data.notes,
       updatedAt: todayStamp(),
-    });
+    };
+    shipments.unshift(shipment);
     setShipments(shipments);
+    saveShipmentToFirestore(shipment).catch((error) => console.warn("Shipment sync failed.", error));
     shipmentForm.reset();
     renderCrm();
   });
@@ -329,7 +487,7 @@ function initCrm() {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(leadForm).entries());
     const leads = getLeads();
-    leads.unshift({
+    const lead = {
       id: newId("lead"),
       name: data.name,
       company: data.company,
@@ -342,8 +500,10 @@ function initCrm() {
       status: data.status,
       notes: data.notes,
       createdAt: new Date().toISOString().slice(0, 10),
-    });
+    };
+    leads.unshift(lead);
     setLeads(leads);
+    saveLeadToFirestore(lead).catch((error) => console.warn("Lead sync failed.", error));
     leadForm.reset();
     renderCrm();
   });
@@ -351,6 +511,10 @@ function initCrm() {
   resetButton.addEventListener("click", () => {
     setShipments(seedShipments);
     setLeads(seedLeads);
+    Promise.all([
+      ...seedShipments.map((shipment) => saveShipmentToFirestore(shipment)),
+      ...seedLeads.map((lead) => saveLeadToFirestore(lead)),
+    ]).catch((error) => console.warn("Demo reset sync failed.", error));
     renderCrm();
   });
 
@@ -362,6 +526,7 @@ function initCrm() {
     shipment.status = event.target.value;
     shipment.updatedAt = todayStamp();
     setShipments(shipments);
+    saveShipmentToFirestore(shipment).catch((error) => console.warn("Status sync failed.", error));
     renderCrm();
   });
 
