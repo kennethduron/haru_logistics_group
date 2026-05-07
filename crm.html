@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM Interno | Haru Logistics Group</title>
+  <meta name="description" content="CRM interno de demostracion para reps y dueño de Haru Logistics Group.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="index.html"><span class="brand-mark">HL</span><span>Haru Logistics Group</span></a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="nav-menu">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="servicios.html">Servicios</a>
+        <a class="nav-link" href="rutas.html">Rutas</a>
+        <a class="nav-link" href="seguimiento.html">Seguimiento</a>
+        <a class="nav-link" href="nosotros.html">Nosotros</a>
+        <a class="nav-link" href="contacto.html">Contacto</a>
+        <a class="nav-link active" href="crm.html">CRM</a>
+        <a class="btn btn-primary" href="contacto.html#cotizar">Cotizar</a>
+      </div>
+    </nav>
+  </header>
+
+  <main data-crm>
+    <section class="page-hero page-hero-compact" style="--hero-image: url('../../images/image5.webp')">
+      <div class="container">
+        <p class="eyebrow">CRM interno</p>
+        <h1>Control comercial, operativo y ejecutivo en un solo panel.</h1>
+        <p>Los reps administran leads y envíos. El dueño ve toda la operación: cargas activas, ventas estimadas, entregas y rendimiento por ejecutivo.</p>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="crm-toolbar">
+          <label>Vista
+            <select data-role>
+              <option value="rep">Rep / Ejecutivo</option>
+              <option value="owner">Dueño / Gerencia</option>
+            </select>
+          </label>
+          <label>Rep
+            <select data-rep-filter>
+              <option>Todos</option>
+            </select>
+          </label>
+          <button class="btn btn-secondary" type="button" data-reset-demo>Reiniciar datos demo</button>
+        </div>
+
+        <div class="crm-kpis">
+          <div class="crm-kpi"><span>Cargas activas</span><strong data-kpi-active>0</strong></div>
+          <div class="crm-kpi"><span>Entregadas</span><strong data-kpi-delivered>0</strong></div>
+          <div class="crm-kpi"><span>Leads</span><strong data-kpi-leads>0</strong></div>
+          <div class="crm-kpi"><span>Valor estimado</span><strong data-kpi-value>$0.00</strong></div>
+        </div>
+
+        <div class="grid-2 crm-forms">
+          <article class="card">
+            <div class="card-body">
+              <h2>Crear envío con tracking</h2>
+              <p>Este formulario genera o registra el tracking number que el cliente usará en la página de seguimiento.</p>
+              <form class="form" data-shipment-form>
+                <div class="form-grid">
+                  <label>Tracking number
+                    <input name="tracking" placeholder="Auto si se deja vacío">
+                  </label>
+                  <label>Rep asignado
+                    <select name="rep" required></select>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>Empresa cliente
+                    <input name="customer" required>
+                  </label>
+                  <label>Contacto
+                    <input name="contact" required>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>Email
+                    <input type="email" name="email">
+                  </label>
+                  <label>Teléfono
+                    <input name="phone">
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>Origen
+                    <input name="origin" required>
+                  </label>
+                  <label>Destino
+                    <input name="destination" required>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>Servicio
+                    <select name="service" required>
+                      <option>Maritimo</option>
+                      <option>Aereo</option>
+                      <option>Terrestre</option>
+                      <option>Multimodal</option>
+                    </select>
+                  </label>
+                  <label>Estado
+                    <select name="status" required>
+                      <option value="booked">Reservado</option>
+                      <option value="docs">Documentos</option>
+                      <option value="transit">En transito</option>
+                      <option value="customs">En aduana</option>
+                      <option value="delivered">Entregado</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>ETA
+                    <input type="date" name="eta">
+                  </label>
+                  <label>Valor estimado USD
+                    <input type="number" name="value" min="0" step="25">
+                  </label>
+                </div>
+                <label>Notas operativas
+                  <textarea name="notes" placeholder="Documentos, naviera, observaciones, siguiente paso..."></textarea>
+                </label>
+                <button class="btn btn-primary" type="submit">Crear envío</button>
+              </form>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <h2>Registrar lead</h2>
+              <p>Los leads vienen de llamadas, WhatsApp, referidos o el formulario público de contacto.</p>
+              <form class="form" data-lead-form>
+                <div class="form-grid">
+                  <label>Nombre
+                    <input name="name" required>
+                  </label>
+                  <label>Empresa
+                    <input name="company" required>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>Email
+                    <input type="email" name="email">
+                  </label>
+                  <label>Teléfono
+                    <input name="phone">
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>Origen
+                    <input name="origin">
+                  </label>
+                  <label>Destino
+                    <input name="destination">
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label>Servicio
+                    <select name="service">
+                      <option>Maritimo</option>
+                      <option>Aereo</option>
+                      <option>Terrestre</option>
+                      <option>Multimodal</option>
+                    </select>
+                  </label>
+                  <label>Rep asignado
+                    <select name="rep" required></select>
+                  </label>
+                </div>
+                <label>Etapa comercial
+                  <select name="status">
+                    <option value="lead">Lead nuevo</option>
+                    <option value="quoted">Cotizado</option>
+                    <option value="booked">Reservado</option>
+                  </select>
+                </label>
+                <label>Notas comerciales
+                  <textarea name="notes" placeholder="Necesidad, presupuesto, fecha, objeciones..."></textarea>
+                </label>
+                <button class="btn btn-secondary" type="submit">Guardar lead</button>
+              </form>
+            </div>
+          </article>
+        </div>
+
+        <section class="crm-panel" data-owner-panel hidden>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Vista del dueño</p>
+              <h2>Rendimiento por ejecutivo.</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="crm-table">
+              <thead>
+                <tr><th>Rep</th><th>Leads</th><th>Envíos</th><th>Entregados</th><th>Valor estimado</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="crm-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Operaciones</p>
+              <h2>Envíos y tracking numbers.</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="crm-table">
+              <thead>
+                <tr><th>Tracking</th><th>Cliente</th><th>Ruta</th><th>Rep</th><th>Estado</th><th>ETA</th><th>Valor</th></tr>
+              </thead>
+              <tbody data-shipments-table></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="crm-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Ventas</p>
+              <h2>Leads y oportunidades.</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="crm-table">
+              <thead>
+                <tr><th>Empresa</th><th>Contacto</th><th>Ruta</th><th>Servicio</th><th>Rep</th><th>Etapa</th></tr>
+              </thead>
+              <tbody data-leads-table></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand" href="index.html"><span class="brand-mark">HL</span><span>Haru Logistics Group</span></a><p>CRM demo para controlar leads, reps, envíos, estados y tracking numbers.</p></div>
+      <div><h3>Paneles</h3><p>Rep<br>Dueño<br>Operaciones</p></div>
+      <div><h3>Cliente</h3><p><a href="seguimiento.html">Consultar tracking</a></p></div>
+    </div>
+    <div class="container"><small>© 2026 Haru Logistics Group.</small></div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
